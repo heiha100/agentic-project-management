@@ -1,96 +1,96 @@
-# APM Task Assignment Prompt Crafting Guide
+# APM 任务分配提示制作指南
 
-## 1. Purpose
+## 1. 目的
 
-This guide provides instructions and best practices for you, the Manager Agent, to craft effective prompts for assigning tasks to Implementation Agents within the Agentic Project Management (APM) framework. These prompts are the primary mechanism for delegating work based on the approved `Implementation_Plan.md`.
+本指南为您（经理代理）提供了在代理项目管理 (APM) 框架内为向实施代理分配任务制作有效提示的说明和最佳实践。这些提示是根据批准的 `Implementation_Plan.md` 委派工作的主要机制。
 
-## 2. Core Principles
+## 2. 核心原则
 
-*   **Clarity & Precision:** The prompt must unambiguously define the task, its scope, and expected outcomes.
-*   **Contextual Sufficiency:** Provide all necessary information (code snippets, file paths, previous work context) for the Implementation Agent to succeed.
-*   **Actionability:** The task should be broken down sufficiently (as per the Implementation Plan) so the agent can reasonably execute it.
-*   **Adaptability:** The structure and detail level should adapt based on the specific task, its complexity, and whether the agent is new or continuing work.
-*   **Consistency:** Adhere to the general structure and include mandatory components like logging instructions.
+*   **清晰和精确：** 提示必须明确定义任务、其范围和预期结果。
+*   **上下文充分性：** 提供所有必要的信息（代码片段、文件路径、先前的工作上下文），以使实施代理能够成功。
+*   **可操作性：** 任务应充分分解（根据实施计划），以便代理可以合理地执行它。
+*   **适应性：** 结构和详细程度应根据具体任务、其复杂性以及代理是新代理还是继续工作的代理进行调整。
+*   **一致性：** 遵守总体结构并包括强制性组件，如日志记录说明。
 
-## 3. Recommended Prompt Structure (Adaptable)
+## 3. 推荐的提示结构（可调整）
 
-Below is a recommended structure. You should adapt this template, adding, removing, or modifying sections based on the specific context of the task assignment. Not all sections are required for every prompt.
+以下是推荐的结构。您应该调整此模板，根据任务分配的具体上下文添加、删除或修改部分。并非所有部分都对每个提示都是必需的。
 
 ```markdown
-# APM Task Assignment: [Brief Task Title]
+# APM 任务分配：[简要任务标题]
 
-## 1. Agent Role & APM Context (Required for First Task to a New Agent)
+## 1. 代理角色和 APM 上下文（新代理的第一个任务需要）
 
-*   **Introduction:** "You are activated as an Implementation Agent within the Agentic Project Management (APM) framework for the [Project Name/Goal] project."
-*   **Your Role:** Briefly explain the Implementation Agent's role: executing assigned tasks diligently and logging work meticulously.
-*   **Workflow:** Briefly mention interaction with the Manager Agent (via the User) and the importance of the Memory Bank.
-*   **Note:** *If a dedicated `Agent_Onboarding_Context.md` file exists within the APM framework assets (confirm availability as per Phase A of your initiation), you may reference it here for a more detailed explanation. Otherwise, provide this summary.* 
+*   **介绍：** “您已作为[项目名称/目标]项目的代理项目管理 (APM) 框架内的实施代理被激活。”
+*   **您的角色：** 简要解释实施代理的角色：努力执行分配的任务并细致地记录工作。
+*   **工作流程：** 简要提及与经理代理（通过用户）的互动以及内存库的重要性。
+*   **注意：** *如果 APM 框架资产中存在专用的 `Agent_Onboarding_Context.md` 文件（根据您的启动阶段 A 确认可用性），您可以在此处引用它以获取更详细的解释。否则，请提供此摘要。*
 
-## 2. Onboarding / Context from Prior Work (Required for Sequential Multi-Agent Tasks)
+## 2. 入职/先前工作的上下文（顺序多代理任务需要）
 
-*   **Purpose:** To provide necessary context when an agent builds directly upon the work of a previous agent within the same complex task.
-*   **Prerequisite:** This section is generated *after* you have reviewed the output from the preceding agent(s).
-*   **Content:**
-    *   Summarize the relevant work completed by the previous agent(s) (e.g., "Agent A has successfully implemented the database schema for X and created the initial API endpoint structure in `file.py`.").
-    *   Include key findings from your review (e.g., "The schema correctly captures the required fields, but ensure you add indexing to the `user_id` field as per the plan.").
-    *   Provide necessary code snippets or file references from the previous agent's work.
-    *   Clearly state how the current task connects to or builds upon this prior work.
+*   **目的：** 当一个代理在同一复杂任务中直接基于前一个代理的工作进行构建时，提供必要的上下文。
+*   **先决条件：** 此部分是在您审查了前一个代理的输出*之后*生成的。
+*   **内容：**
+    *   总结前一个代理完成的相关工作（例如，“代理 A 已成功为 X 实现了数据库模式，并在 `file.py` 中创建了初始 API 端点结构。”）。
+    *   包括您审查中的关键发现（例如，“模式正确地捕获了所需的字段，但请确保根据计划将索引添加到 `user_id` 字段。”）。
+    *   提供前一个代理工作中的必要代码片段或文件引用。
+    *   清楚地说明当前任务如何与此先前的工作联系或在其基础上构建。
 
-## 3. Task Assignment
+## 3. 任务分配
 
-*   **Reference Implementation Plan:** Explicitly link the task to the `Implementation_Plan.md`. Example: "This assignment corresponds to `Phase X, Task Y, Sub-component Z` in the Implementation Plan."
-*   **Objective:** Clearly restate the specific objective of this task or sub-component, as stated in the Implementation Plan.
-*   **Detailed Action Steps (Incorporating Plan Guidance):**
-    *   List the specific, fine-grained actions the Implementation Agent needs to perform. These should be based *directly* on the nested bullet points for the relevant task/sub-component in the `Implementation_Plan.md`.
-    *   **Crucially, look for any 'Guidance:' notes** associated with these action steps in the `Implementation_Plan.md`. These notes highlight critical methods, libraries, parameters, or approaches.
-    *   **You MUST incorporate and expand upon these 'Guidance:' notes in your detailed instructions for the Implementation Agent.** For example, if the plan says:
-        *   `- Implement data tokenization for user reviews.`
-            *   `Guidance: Use DistilBERT tokenizer ('distilbert-base-uncased').`
-    *   Your prompt to the Implementation Agent should then provide full, unambiguous instructions for this, such as:
-        *   `"Your specific actions are:`
-            *   `Implement data tokenization for the 'user_reviews' text column. You must use the DistilBERT tokenizer, specifically initializing it with the 'distilbert-base-uncased' pretrained model. Ensure the output includes 'input_ids' and 'attention_mask'."`
-    *   This ensures that critical methodological choices from the plan are clearly communicated and elaborated upon for the executing agent.
-*   **Provide Necessary Context/Assets:**
-    *   Include any *additional* relevant code snippets, file paths, API documentation links, or data structure definitions needed to complete the task, beyond what was in the plan's guidance notes.
-    *   Specify any constraints or requirements not immediately obvious from the action steps or plan guidance.
+*   **参考实施计划：** 明确地将任务链接到 `Implementation_Plan.md`。示例：“此分配对应于实施计划中的`阶段 X，任务 Y，子组件 Z`。”
+*   **目标：** 清楚地重申实施计划中说明的此任务或子组件的具体目标。
+*   **详细的操作步骤（结合计划指导）：**
+    *   列出实施代理需要执行的具体的、细粒度的操作。这些操作应*直接*基于 `Implementation_Plan.md` 中相关任务/子组件的嵌套项目符号。
+    *   **至关重要的是，查找**与 `Implementation_Plan.md` 中这些操作步骤相关的任何“指导：”说明。这些说明突出了关键的方法、库、参数或方法。
+    *   **您必须在给实施代理的详细说明中包含并扩展这些“指导：”说明。** 例如，如果计划中说：
+        *   `- 实现用户评论的数据分词。`
+            *   `指导：使用 DistilBERT 分词器 ('distilbert-base-uncased')。`
+    *   那么您给实施代理的提示应为此提供完整、明确的说明，例如：
+        *   `“您的具体操作是：`
+            *   `为 'user_reviews' 文本列实现数据分词。您必须使用 DistilBERT 分词器，特别是用 'distilbert-base-uncased' 预训练模型初始化它。确保输出包括 'input_ids' 和 'attention_mask'。”`
+    *   这确保了计划中的关键方法选择能被清楚地传达并为执行代理详细阐述。
+*   **提供必要的上下文/资产：**
+    *   包括完成任务所需的任何*额外*相关代码片段、文件路径、API 文档链接或数据结构定义，超出计划指导说明中的内容。
+    *   指定操作步骤或计划指导中不明显的任何约束或要求。
 
-## 4. Expected Output & Deliverables
+## 4. 预期输出和可交付成果
 
-*   **Define Success:** Clearly describe what constitutes successful completion of the task.
-*   **Specify Deliverables:** List the expected outputs (e.g., modified code files, new files created, specific data generated, test results).
-*   **Format (If applicable):** Specify any required format for the output.
+*   **定义成功：** 清楚地描述什么构成任务的成功完成。
+*   **指定可交付成果：** 列出预期的输出（例如，修改后的代码文件、创建的新文件、生成的特定数据、测试结果）。
+*   **格式（如果适用）：** 指定输出所需的任何格式。
 
-## 5. Memory Bank Logging Instructions (Mandatory)
+## 5. 内存库日志记录说明（强制性）
 
-*   **Instruction:** "Upon successful completion of this task, you **must** log your work comprehensively to the project's `Memory_Bank.md` file."
-*   **Format Adherence:** "Adhere strictly to the established logging format. Ensure your log includes:
-    *   A reference to the assigned task in the Implementation Plan.
-    *   A clear description of the actions taken.
-    *   Any code snippets generated or modified.
-    *   Any key decisions made or challenges encountered.
-    *   Confirmation of successful execution (e.g., tests passing, output generated)."
-*   **Note:** *If a dedicated `Memory_Bank_Log_Format.md` file exists within the APM framework assets, explicitly reference it here. If unavailable, emphasize the importance of detailed, structured logging based on the points above.* 
+*   **说明：** “成功完成此任务后，您**必须**将您的工作全面记录到项目的`Memory_Bank.md`文件中。”
+*   **格式遵守：** “严格遵守已建立的日志记录格式。确保您的日志包括：
+    *   对实施计划中分配任务的引用。
+    *   对所采取行动的清晰描述。
+    *   生成或修改的任何代码片段。
+    *   做出的任何关键决策或遇到的挑战。
+    *   成功执行的确认（例如，测试通过，生成输出）。”
+*   **注意：** *如果 APM 框架资产中存在专用的 `Memory_Bank_Log_Format.md` 文件，请在此处明确引用它。如果不可用，请强调基于以上各点进行详细、结构化日志记录的重要性。*
 
-## 6. Clarification Instruction
+## 6. 澄清说明
 
-*   **Instruction:** "If any part of this task assignment is unclear, please state your specific questions before proceeding."
+*   **说明：** “如果此任务分配的任何部分不清楚，请在继续之前陈述您的具体问题。”
 
 ```
 
-## 4. Best Practices & Adaptability
+## 4. 最佳实践和适应性
 
-*   **Task Granularity:** Ensure the assigned task corresponds to a manageable chunk of work as defined in the Implementation Plan. If a sub-component seems too large, consider advising the User to break it down further in the plan before assigning.
-*   **Context Over Brevity:** Provide sufficient context, even if it makes the prompt longer. Missing context is a primary cause of agent errors.
-*   **Code Snippets:** Use code snippets effectively to pinpoint specific areas for modification or reference.
-*   **File Paths:** Always provide clear, relative (or absolute, if necessary) paths to relevant files.
-*   **Review Before Sending:** Mentally review the prompt: If you were the Implementation Agent, would you have everything you need to start?
-*   **Complexity Scaling:** For very simple tasks, you might combine sections or be less verbose. For highly complex tasks, ensure hyper-clarity and provide extensive context, potentially breaking it into smaller sub-prompts if necessary after consultation with the User.
+*   **任务粒度：** 确保分配的任务与实施计划中定义的 manageable 工作块相对应。如果子组件看起来太大，请考虑建议用户在分配之前在计划中进一步分解它。
+*   **上下文优于简洁：** 提供足够的上下文，即使这会使提示更长。缺少上下文是代理错误的主要原因。
+*   **代码片段：** 有效地使用代码片段来指出需要修改或参考的特定区域。
+*   **文件路径：** 始终提供清晰的、相对的（或绝对的，如果需要）相关文件路径。
+*   **发送前审查：** 在脑海中审查提示：如果您是实施代理，您是否拥有开始所需的一切？
+*   **复杂性扩展：** 对于非常简单的任务，您可以组合部分或使用更少的文字。对于高度复杂的任务，请确保超清晰并提供广泛的上下文，如有必要，在与用户协商后将其分解为更小的子提示。
 
-### Ensuring Adherence to Memory and Logging Standards
+### 确保遵守内存和日志记录标准
 
-When assigning tasks to specialized agents, especially those involving file/directory creation or substantive work requiring documentation, explicitly remind them of their obligations regarding the Memory Bank and logging procedures:
+在向专业代理分配任务时，特别是那些涉及文件/目录创建或需要文档记录的实质性工作的任务，请明确提醒他们关于内存库和日志记录程序的义务：
 
-*   **Memory Bank Structure:** "Ensure all Memory Bank directory and file creations strictly adhere to the naming conventions and structural guidelines detailed in the `02_Memory_Bank_Guide.md`. All names and structures must be validated against the current `Implementation_Plan.md` **before** creation. If there is any ambiguity, consult back with the Manager Agent."
-*   **Log Conciseness and Quality:** "All log entries must conform to the `Memory_Bank_Log_Format.md`. Emphasize the need for concise yet informative summaries, focusing on key actions, decisions, and outcomes. Avoid verbose descriptions or unnecessary inclusion of extensive code/data in the log itself."
+*   **内存库结构：** “确保所有内存库目录和文件的创建都严格遵守 `02_Memory_Bank_Guide.md` 中详细说明的命名约定和结构指南。所有名称和结构都必须在创建**之前**与当前的 `Implementation_Plan.md` 进行验证。如果有任何歧义，请向经理代理咨询。”
+*   **日志的简洁性和质量：** “所有日志条目都必须符合 `Memory_Bank_Log_Format.md`。强调需要简洁而信息丰富的摘要，重点关注关键行动、决策和结果。避免在日志本身中进行冗长的描述或不必要地包含大量代码/数据。”
 
-Apply these guidelines to generate clear, contextual, and actionable task assignment prompts for the Implementation Agents, facilitating efficient and accurate project execution. 
+应用这些指南为实施代理生成清晰、有上下文和可操作的任务分配提示，以促进高效和准确的项目执行。 

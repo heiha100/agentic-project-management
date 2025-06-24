@@ -1,79 +1,79 @@
-# APM Glossary of Core Concepts & Terms
+# APM 核心概念和术语词汇表
 
-This document provides concise definitions for the key terms used within the Agentic Project Management (APM) framework. Use this as a quick reference and navigate to the linked documents for more detailed explanations, guides, or format specifications.
+本文档为代理项目管理 (APM) 框架中使用的关键术语提供了简明的定义。请将其用作快速参考，并导航到链接的文档以获取更详细的解释、指南或格式规范。
 
 ---
 
-**Agent Handover / Handover Protocol**
+**代理交接/交接协议**
 
-The defined procedure for transferring project context and responsibilities between AI agent instances (e.g., Manager to new Manager, or between Specialized Agents). It utilizes a `Handover_File.md` and `Handover_Prompt.md` to ensure project continuity, especially when dealing with LLM context limits.
-*   *See procedure:* `prompts/01_Manager_Agent_Core_Guides/05_Handover_Protocol_Guide.md`
-*   *See artifact formats:* `prompts/02_Utility_Prompts_And_Format_Definitions/Handover_Artifact_Formats.md`
-*   *See practical steps:* `docs/02_Getting_Started.md` (Step 6)
-*   *See visual overview:* `docs/01_Workflow_Overview.md` (Handover Protocol Flow)
+在 AI 代理实例之间转移项目上下文和责任的已定义程序（例如，从经理到新经理，或在专门代理之间）。它利用 `Handover_File.md` 和 `Handover_Prompt.md` 来确保项目连续性，尤其是在处理 LLM 上下文限制时。
+*   *查看程序：* `prompts/01_Manager_Agent_Core_Guides/05_Handover_Protocol_Guide.md`
+*   *查看产物格式：* `prompts/02_Utility_Prompts_And_Format_Definitions/Handover_Artifact_Formats.md`
+*   *查看实际步骤：* `docs/02_Getting_Started.md` (第 6 步)
+*   *查看可视化概述：* `docs/01_Workflow_Overview.md` (交接协议流程)
 
-**APM (Agentic Project Management)**
+**APM (代理项目管理)**
 
-The overall framework, consisting of prompts, format definitions, protocols, and best practices, designed to structure complex project execution using multiple collaborating AI assistants.
-*   *See overview:* `docs/00_Introduction.md`
+整个框架，包括提示、格式定义、协议和最佳实践，旨在利用多个协作的 AI 助手来结构化复杂项目的执行。
+*   *查看概述：* `docs/00_Introduction.md`
 
-**Core APM Cycle**
+**核心 APM 周期**
 
-The main iterative loop of activity in an APM project: Manager prepares prompt -> User delivers -> Implementer executes -> Implementer reports -> User confirms log -> Implementer logs -> User informs Manager -> Manager reviews -> Repeat.
-*   *See visual overview:* `docs/01_Workflow_Overview.md` (Core APM Cycle)
-*   *See practical steps:* `docs/02_Getting_Started.md` (Step 5)
+APM 项目中活动的主要迭代循环：经理准备提示 -> 用户交付 -> 执行者执行 -> 执行者报告 -> 用户确认日志 -> 执行者记录日志 -> 用户通知经理 -> 经理审查 -> 重复。
+*   *查看可视化概述：* `docs/01_Workflow_Overview.md` (核心 APM 周期)
+*   *查看实际步骤：* `docs/02_Getting_Started.md` (第 5 步)
 
-**Handover File (`Handover_File.md`)**
+**交接文件 (`Handover_File.md`)**
 
-A structured Markdown document created during the Handover Protocol. It serves as a comprehensive context dump, containing the current project state, plan status, recent logs, decisions, and other critical information needed by the incoming agent.
-*   *See format definition:* `prompts/02_Utility_Prompts_And_Format_Definitions/Handover_Artifact_Formats.md` (Section 2)
-*   *See procedure context:* `prompts/01_Manager_Agent_Core_Guides/05_Handover_Protocol_Guide.md` (Section 3.1)
+在交接协议期间创建的结构化 Markdown 文档。它作为一个全面的上下文转储，包含当前项目状态、计划状态、最近的日志、决策以及传入代理所需的其他关键信息。
+*   *查看格式定义：* `prompts/02_Utility_Prompts_And_Format_Definitions/Handover_Artifact_Formats.md` (第 2 节)
+*   *查看程序上下文：* `prompts/01_Manager_Agent_Core_Guides/05_Handover_Protocol_Guide.md` (第 3.1 节)
 
-**Handover Prompt (`Handover_Prompt.md`)**
+**交接提示 (`Handover_Prompt.md`)**
 
-A Markdown prompt used to initialize a new agent instance during a handover. It includes standard APM onboarding information (if applicable), instructions to process the `Handover_File.md`, and specifies the immediate next steps for the incoming agent.
-*   *See format definition:* `prompts/02_Utility_Prompts_And_Format_Definitions/Handover_Artifact_Formats.md` (Section 3)
-*   *See procedure context:* `prompts/01_Manager_Agent_Core_Guides/05_Handover_Protocol_Guide.md` (Section 3.2)
+用于在交接期间初始化新代理实例的 Markdown 提示。它包括标准的 APM 入职信息（如果适用）、处理 `Handover_File.md` 的说明，并指定传入代理的直接后续步骤。
+*   *查看格式定义：* `prompts/02_Utility_Prompts_And_Format_Definitions/Handover_Artifact_Formats.md` (第 3 节)
+*   *查看程序上下文：* `prompts/01_Manager_Agent_Core_Guides/05_Handover_Protocol_Guide.md` (第 3.2 节)
 
-**Implementation Agent**
+**实施代理**
 
-An AI agent instance responsible for executing specific, assigned tasks based on the `Implementation_Plan.md` and instructions provided in a `Task Assignment Prompt`. They report status back to the User and log their work to the `Memory_Bank.md` upon User confirmation.
-*   *See onboarding prompt:* `prompts/02_Utility_Prompts_And_Format_Definitions/Implementation_Agent_Onboarding.md`
-*   *See role in workflow:* `docs/01_Workflow_Overview.md`
+一个 AI 代理实例，负责根据 `Implementation_Plan.md` 和 `Task Assignment Prompt` 中提供的说明执行特定的、分配的任务。他们在用户确认后向用户报告状态并将其工作记录到 `Memory_Bank.md` 中。
+*   *查看入职提示：* `prompts/02_Utility_Prompts_And_Format_Definitions/Implementation_Agent_Onboarding.md`
+*   *查看在工作流程中的角色：* `docs/01_Workflow_Overview.md`
 
-**Implementation Plan (`Implementation_Plan.md`)**
+**实施计划 (`Implementation_Plan.md`)**
 
-A detailed, structured Markdown document created by the Manager Agent (after User approval of the structure). It breaks down the project into phases (optional), tasks, and granular sub-tasks, assigning responsibility to specific Implementation Agents. It serves as the blueprint for project execution.
-*   *See formatting guide:* `prompts/01_Manager_Agent_Core_Guides/01_Implementation_Plan_Guide.md`
-*   *See creation process:* `docs/02_Getting_Started.md` (Step 4)
+由经理代理创建的详细、结构化的 Markdown 文档（在用户批准结构后）。它将项目分解为阶段（可选）、任务和细分的子任务，并将责任分配给特定的实施代理。它作为项目执行的蓝图。
+*   *查看格式指南：* `prompts/01_Manager_Agent_Core_Guides/01_Implementation_Plan_Guide.md`
+*   *查看创建过程：* `docs/02_Getting_Started.md` (第 4 步)
 
-**Manager Agent**
+**经理代理**
 
-The central AI agent instance responsible for overall project coordination. Its duties include understanding requirements, creating the Implementation Plan, assisting the User with Task Assignment Prompts, reviewing work logged in the Memory Bank, and managing the Handover Protocol.
-*   *See initiation prompt:* `prompts/00_Initial_Manager_Setup/01_Initiation_Prompt.md`
-*   *See core guides:* `prompts/01_Manager_Agent_Core_Guides/`
-*   *See role in workflow:* `docs/01_Workflow_Overview.md`
+负责整个项目协调的中央 AI 代理实例。其职责包括理解需求、创建实施计划、协助用户处理任务分配提示、审查记录在内存库中的工作以及管理交接协议。
+*   *查看启动提示：* `prompts/00_Initial_Manager_Setup/01_Initiation_Prompt.md`
+*   *查看核心指南：* `prompts/01_Manager_Agent_Core_Guides/`
+*   *查看在工作流程中的角色：* `docs/01_Workflow_Overview.md`
 
-**Memory Bank (`Memory_Bank.md`)**
+**内存库 (`Memory_Bank.md`)**
 
-One or more designated Markdown files acting as the project's persistent, chronological logbook. Implementation and Specialized Agents record their actions, outputs, results, and issues here in a standardized format after User confirmation. It provides shared context and an audit trail.
-*   *See system setup guide:* `prompts/01_Manager_Agent_Core_Guides/02_Memory_Bank_Guide.md`
-*   *See log entry format definition:* `prompts/02_Utility_Prompts_And_Format_Definitions/Memory_Bank_Log_Format.md`
-*   *See conceptual overview:* `docs/01_Workflow_Overview.md` (Memory Bank Concept)
-*   *See setup in practice:* `docs/02_Getting_Started.md` (Step 4)
+一个或多个指定的 Markdown 文件，作为项目的持久、按时间顺序的日志簿。实施和专门代理在用户确认后，以标准化格式在此处记录其操作、输出、结果和问题。它提供了共享的上下文和审计跟踪。
+*   *查看系统设置指南：* `prompts/01_Manager_Agent_Core_Guides/02_Memory_Bank_Guide.md`
+*   *查看日志条目格式定义：* `prompts/02_Utility_Prompts_And_Format_Definitions/Memory_Bank_Log_Format.md`
+*   *查看概念概述：* `docs/01_Workflow_Overview.md` (内存库概念)
+*   *查看实践中的设置：* `docs/02_Getting_Started.md` (第 4 步)
 
-**Specialized Agent**
+**专门代理**
 
-An AI agent instance assigned to perform specific, specialized functions beyond standard implementation, such as debugging code (`Debugger Agent`), explaining concepts (`Tutor Agent`), or performing detailed reviews (`Reviewer Agent`). They follow similar interaction patterns as Implementation Agents (task assignment via User, logging to Memory Bank).
-*   *See onboarding prompt (shared):* `prompts/02_Utility_Prompts_And_Format_Definitions/Implementation_Agent_Onboarding.md`
+一个 AI 代理实例，被分配执行超出标准实施范围的特定、专门的功能，例如调试代码（`调试器代理`）、解释概念（`导师代理`）或执行详细审查（`审查员代理`）。它们遵循与实施代理类似的交互模式（通过用户分配任务，记录到内存库）。
+*   *查看入职提示（共享）：* `prompts/02_Utility_Prompts_And_Format_Definitions/Implementation_Agent_Onboarding.md`
 
-**Task Assignment Prompt**
+**任务分配提示**
 
-A prompt, typically drafted by the Manager Agent and delivered by the User, used to assign a specific task from the `Implementation_Plan.md` to an Implementation or Specialized Agent. It includes the task objective, detailed steps, necessary context, expected outputs, and mandatory logging instructions.
-*   *See crafting guide:* `prompts/01_Manager_Agent_Core_Guides/03_Task_Assignment_Prompts_Guide.md`
-*   *See usage in workflow:* `docs/02_Getting_Started.md` (Step 5)
+一个通常由经理代理起草并由用户交付的提示，用于将 `Implementation_Plan.md` 中的特定任务分配给实施代理或专门代理。它包括任务目标、详细步骤、必要的上下文、预期的输出和强制性的日志记录说明。
+*   *查看制作指南：* `prompts/01_Manager_Agent_Core_Guides/03_Task_Assignment_Prompts_Guide.md`
+*   *查看在工作流程中的使用：* `docs/02_Getting_Started.md` (第 5 步)
 
-**User**
+**用户**
 
-The human project principal. The User defines the project goals, acts as the crucial communication bridge between all AI agents, makes key decisions (e.g., plan approval, logging confirmation), reviews progress, and provides overall supervision.
-*   *See role in workflow diagrams:* `docs/01_Workflow_Overview.md` 
+人类项目负责人。用户定义项目目标，作为所有 AI 代理之间至关重要的沟通桥梁，做出关键决策（例如，计划批准、日志记录确认），审查进度并提供总体监督。
+*   *查看在工作流程图中的角色：* `docs/01_Workflow_Overview.md` 

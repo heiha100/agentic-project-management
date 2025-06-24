@@ -1,84 +1,84 @@
-# APM Troubleshooting Guide
+# APM 故障排除指南
 
-This guide addresses common issues, questions, and challenges that users might encounter when using the Agentic Project Management (APM) framework. If you're facing a problem not listed here, consider opening an issue on the GitHub repository.
+本指南旨在解决用户在使用代理项目管理 (APM) 框架时可能遇到的常见问题、疑问和挑战。如果您遇到的问题未在此处列出，请考虑在 GitHub 仓库中提交一个 issue。
 
-## General Issues & Best Practices
+## 一般问题和最佳实践
 
-**1. Issue: Agent seems to have forgotten previous instructions or context (Hallucinations / Context Loss).**
+**1. 问题：代理似乎忘记了之前的指令或上下文（幻觉/上下文丢失）。**
 
-*   **Cause A: Context Window Limit Approaching (Especially Manager Agent)**
-    *   **Solution:** This is the primary reason for the **Handover Protocol**. If the Manager Agent (or any long-running agent) starts to lose track of earlier decisions, plan details, or overall project context, it's time to initiate a handover. Don't wait until context is completely lost; be proactive.
-    *   *See:* `prompts/01_Manager_Agent_Core_Guides/05_Handover_Protocol_Guide.md` and `docs/02_Getting_Started.md` (Step 6).
-*   **Cause B: Incorrect Agent Session/Tab Used**
-    *   **Solution:** Ensure you are interacting with the correct agent in its designated chat tab (e.g., providing implementation details to an Implementation Agent, not the Manager). Mixing up tabs can happen very often in a multi-agent workflow when the User has to manage many AI assistant sessions concurrently! This however, can severely confuse an agent's context.
-*   **Cause C: Prompt Lacks Sufficient Context for a Specific Task**
-    *   **Solution:** When crafting `Task Assignment Prompts` with the Manager, ensure all necessary prior context, relevant code snippets, or data is included or clearly referenced. Sometimes an agent forgets because the *immediate* prompt was insufficient.
+*   **原因 A：上下文窗口限制接近（尤其是经理代理）**
+    *   **解决方案：** 这是**交接协议**的主要原因。如果经理代理（或任何长期运行的代理）开始忘记早期的决策、计划细节或整体项目上下文，就应该启动交接。不要等到上下文完全丢失才行动，要主动。
+    *   *请参阅：* `prompts/01_Manager_Agent_Core_Guides/05_Handover_Protocol_Guide.md` 和 `docs/02_Getting_Started.md` (第 6 步)。
+*   **原因 B：使用了错误的代理会话/标签页**
+    *   **解决方案：** 确保您正在指定的聊天标签页中与正确的代理互动（例如，向实施代理提供实施细节，而不是向经理代理）。在多代理工作流程中，当用户需要同时管理多个 AI 助手会话时，混淆标签页的情况可能经常发生！然而，这会严重混淆代理的上下文。
+*   **原因 C：特定任务的提示缺乏足够的上下文**
+    *   **解决方案：** 在与经理一起创建`任务分配提示`时，确保所有必要的先前上下文、相关代码片段或数据都已包含或明确引用。有时代理会忘记，是因为*当前*的提示信息不充分。
 
-**2. Issue: Implementation Agent is not following the plan or is producing incorrect output.**
+**2. 问题：实施代理没有遵循计划或产生了不正确的输出。**
 
-*   **Cause A: Ambiguous Task Assignment Prompt**
-    *   **Solution:** Review the `Task Assignment Prompt` (created with the Manager). Is it crystal clear? Are the action steps precise? Does it include all necessary information? Work with the Manager to refine the prompt and re-assign the task.
-*   **Cause B: Misunderstanding of Core Requirements**
-    *   **Solution:** The issue might stem from an earlier misunderstanding during the Project Discovery phase. Revisit the `Implementation_Plan.md` with the Manager. If the plan itself is flawed or missing key details based on new understanding, the Manager should help you revise the plan section first, then generate a new task prompt.
-*   **Cause C: Agent Needs More Granular Steps**
-    *   **Solution:** Some AI models or tasks require extremely fine-grained steps. If an agent struggles, ask the Manager to help break down the problematic sub-task in the `Implementation_Plan.md` even further, then assign the more detailed micro-tasks.
+*   **原因 A：任务分配提示含糊不清**
+    *   **解决方案：** 审查`任务分配提示`（与经理一起创建的）。它是否清晰明了？行动步骤是否精确？是否包含了所有必要的信息？与经理一起优化提示并重新分配任务。
+*   **原因 B：对核心需求的误解**
+    *   **解决方案：** 问题可能源于项目发现阶段的早期误解。与经理一起重新审视`Implementation_Plan.md`。如果计划本身存在缺陷或基于新的理解缺少关键细节，经理应首先帮助您修改计划部分，然后生成新的任务提示。
+*   **原因 C：代理需要更细粒度的步骤**
+    *   **解决方案：** 某些 AI 模型或任务需要极其细粒度的步骤。如果代理遇到困难，请让经理帮助将`Implementation_Plan.md`中有问题的子任务进一步分解，然后分配更详细的微任务。
 
-**3. Issue: Workflow feels inefficient or too slow.**
+**3. 问题：工作流程感觉效率低下或太慢。**
 
-*   **Cause A: Overly Chatty Interactions**
-    *   **Solution:** While APM structures interaction, aim for concise communication. Provide all necessary information in a single, well-structured prompt where possible, rather than many small back-and-forth messages for a single conceptual step (e.g., provide all requirements for a task in one go to the Manager).
-*   **Cause B: Not Leveraging Manager Agent Fully for Prompt Crafting**
-    *   **Solution:** The Manager Agent is there to help you draft effective prompts for Implementation Agents, including recalling context from the plan. Use its expertise (guided by `prompts/01_Manager_Agent_Core_Guides/03_Task_Assignment_Prompts_Guide.md`).
+*   **原因 A：过于冗长的交互**
+    *   **解决方案：** 虽然 APM 构建了交互结构，但应力求简洁的沟通。在可能的情况下，在一个结构良好的提示中提供所有必要的信息，而不是为一个概念性步骤进行多次简短的来回消息（例如，一次性向经理提供任务的所有需求）。
+*   **原因 B：没有充分利用经理代理来创建提示**
+    *   **解决方案：** 经理代理可以帮助您为实施代理起草有效的提示，包括从计划中回忆上下文。利用其专业知识（遵循 `prompts/01_Manager_Agent_Core_Guides/03_Task_Assignment_Prompts_Guide.md` 的指导）。
 
-## Memory Bank Specific Issues
+## 内存库特定问题
 
-**4. Issue: Accidentally overwriting previous entries in `Memory_Bank.md`.**
+**4. 问题：意外覆盖了 `Memory_Bank.md` 中的先前条目。**
 
-*   **Cause:** Manually editing the file and pasting new content in the wrong place, or an agent (if it has direct edit capability and is not managed carefully) making an incorrect modification.
-*   **Solution:**
-    *   **Best Practice:** Always instruct agents to *append* their logs. When manually adding logs, ensure you scroll to the end of the file.
-    *   **Version Control:** Use Git or another version control system for your project, including `Memory_Bank.md`. Commit changes frequently. This allows you to revert to previous versions if an overwrite occurs.
-    *   **User Confirmation:** The APM workflow emphasizes User confirmation *before* an Implementation Agent logs. This step should also involve the User guiding *where* (which Memory Bank, if multiple) the log should go, ensuring it's appended.
+*   **原因：** 手动编辑文件并在错误的位置粘贴新内容，或者代理（如果它具有直接编辑能力且未被仔细管理）进行了不正确的修改。
+*   **解决方案：**
+    *   **最佳实践：** 始终指示代理*追加*其日志。手动添加日志时，请确保滚动到文件末尾。
+    *   **版本控制：** 为您的项目（包括 `Memory_Bank.md`）使用 Git 或其他版本控制系统。频繁提交更改。这使您可以在发生覆盖时恢复到以前的版本。
+    *   **用户确认：** APM 工作流程强调在实施代理记录日志*之前*进行用户确认。此步骤还应涉及用户指导日志应记录到*哪里*（如果有多个内存库），以确保其被追加。
 
-**5. Issue: The `Memory_Bank.md` file is becoming too large and difficult for an AI agent to parse/read effectively (e.g., when Manager reviews).**
+**5. 问题：`Memory_Bank.md` 文件变得过大，AI 代理难以有效解析/读取（例如，当经理审查时）。**
 
-*   **Cause:** A single log file for a very large or long-running project accumulates too much text for the AI's context window when trying to process it (e.g., during reviews or handovers).
-*   **Solution: Multiple Memory Banks.**
-    *   The choice of Memory Bank system (single file vs. a multi-file directory) is determined during the initial project setup with the Manager Agent, guided by `prompts/01_Manager_Agent_Core_Guides/02_Memory_Bank_Guide.md`. For complex projects, this guide helps establish multiple, more focused Memory Bank files from the outset or as the project grows.
-    *   **Strategy:** Create separate `Memory_Bank.md` files within a `/Memory` directory, for example:
+*   **原因：** 对于一个非常大或长期运行的项目，单个日志文件在 AI 尝试处理时（例如，在审查或交接期间）会累积过多的文本，超出其上下文窗口。
+*   **解决方案：多内存库。**
+    *   内存库系统的选择（单个文件与多文件目录）是在项目初始设置期间与经理代理一起确定的，遵循 `prompts/01_Manager_Agent_Core_Guides/02_Memory_Bank_Guide.md` 的指导。对于复杂的项目，本指南有助于从一开始或随着项目的发展建立多个、更专注的内存库文件。
+    *   **策略：** 在 `/Memory` 目录中创建单独的 `Memory_Bank.md` 文件，例如：
         *   `Memory/Phase1_Bank.md`
         *   `Memory/Backend_API_Bank.md`
         *   `Memory/User_Auth_Feature_Bank.md`
-    *   **Guidance:** When a task is assigned, the `Task Assignment Prompt` (and your instruction to the Implementation Agent) must specify *which* Memory Bank file to log to.
-    *   When asking the Manager to review, point it to the specific Memory Bank file relevant to the task(s) being reviewed.
-    *   The `Handover_File.md` should then list all active Memory Bank files and their purpose.
-    *   This keeps individual log files manageable and contextually relevant for AI processing.
+    *   **指导：** 分配任务时，`任务分配提示`（以及您对实施代理的指示）必须指定要记录到*哪个*内存库文件。
+    *   当要求经理审查时，请将其指向与正在审查的任务相关的特定内存库文件。
+    *   然后，`Handover_File.md` 应列出所有活动的内存库文件及其用途。
+    *   这使得单个日志文件易于管理，并且在上下文上与 AI 处理相关。
 
-**6. Issue: Agents are not logging in the correct format.**
+**6. 问题：代理没有以正确的格式记录日志。**
 
-*   **Cause A: Onboarding Missed or Forgotten**
-    *   **Solution:** Ensure every new Implementation/Specialized Agent receives the `Implementation_Agent_Onboarding.md` prompt, which references the `Memory_Bank_Log_Format.md`.
-*   **Cause B: Task Assignment Prompt Lacks Reminder**
-    *   **Solution:** Ensure the Manager includes a clear instruction in every `Task Assignment Prompt` to log work according to the standard format, referencing `Memory_Bank_Log_Format.md`.
-    *   *See:* `prompts/01_Manager_Agent_Core_Guides/03_Task_Assignment_Prompts_Guide.md` (Section 5).
-*   **Corrective Action:** If an agent logs incorrectly, provide feedback (via the User), show them the correct format example from `Memory_Bank_Log_Format.md`, and ask them to re-log or edit their last entry.
+*   **原因 A：入职培训被遗漏或忘记**
+    *   **解决方案：** 确保每个新的实施/专业代理都收到 `Implementation_Agent_Onboarding.md` 提示，该提示引用了 `Memory_Bank_Log_Format.md`。
+*   **原因 B：任务分配提示缺少提醒**
+    *   **解决方案：** 确保经理在每个`任务分配提示`中都包含明确的指示，要求根据标准格式记录工作，并引用 `Memory_Bank_Log_Format.md`。
+    *   *请参阅：* `prompts/01_Manager_Agent_Core_Guides/03_Task_Assignment_Prompts_Guide.md` (第 5 节)。
+*   **纠正措施：** 如果代理记录不正确，请（通过用户）提供反馈，向他们展示 `Memory_Bank_Log_Format.md` 中的正确格式示例，并要求他们重新记录或编辑其最后一条条目。
 
-## Handover Specific Issues
+## 交接特定问题
 
-**7. Issue: Lost important context because handover was done too late.**
+**7. 问题：由于交接做得太晚，丢失了重要上下文。**
 
-*   **Cause:** Waiting until an agent (especially the Manager) is severely context-limited and performing poorly before initiating the Handover Protocol.
-*   **Solution:**
-    *   **Proactive Handover:** Be vigilant. If the Manager Agent starts asking redundant questions, forgets key plan details, or its responses degrade, initiate the handover process sooner rather than later.
-    *   **Manager Self-Awareness:** The `01_Initiation_Prompt.md` encourages the Manager to be aware of its context. While AI self-awareness of context limits is imperfect, the Manager might give clues.
-    *   **Regular Check-ins:** If a project is very long, consider scheduling periodic check-ins with the Manager to assess its grasp of the overall context, even if it hasn't explicitly signaled problems.
+*   **原因：** 等到代理（尤其是经理）的上下文严重受限且表现不佳时才启动交接协议。
+*   **解决方案：**
+    *   **主动交接：** 保持警惕。如果经理代理开始问重复的问题、忘记关键的计划细节或其响应质量下降，请尽早启动交接过程。
+    *   **经理自我意识：** `01_Initiation_Prompt.md` 鼓励经理意识到其上下文。虽然 AI 对上下文限制的自我意识尚不完善，但经理可能会给出一些线索。
+    *   **定期检查：** 如果项目非常长，可以考虑安排与经理的定期检查，以评估其对整体上下文的掌握情况，即使它没有明确表示有问题。
 
-**8. Issue: New agent doesn't understand the project after a handover.**
+**8. 问题：新代理在交接后不理解项目。**
 
-*   **Cause A: `Handover_File.md` was incomplete or poorly structured.**
-    *   **Solution:** When the outgoing agent (with User/Manager help) prepares the `Handover_File.md`, ensure it's comprehensive, well-organized, and follows the structure in `prompts/02_Utility_Prompts_And_Format_Definitions/Handover_Artifact_Formats.md`. Include all critical decisions, recent logs, plan status, and current blockers.
-*   **Cause B: `Handover_Prompt.md` was unclear or didn't properly guide the new agent.**
-    *   **Solution:** The `Handover_Prompt.md` must clearly instruct the new agent to thoroughly review the `Handover_File.md` and then verify its understanding *before* proceeding.
-*   **Verification Step is Key:** Do not skip the step where the new agent summarizes its understanding of the project status and immediate tasks back to you (the User) for confirmation. If the summary is off, the handover wasn't fully successful, and further clarification or refinement of the handover artifacts might be needed before the new agent takes over.
+*   **原因 A：`Handover_File.md` 不完整或结构不佳。**
+    *   **解决方案：** 当即将离任的代理（在用户/经理的帮助下）准备 `Handover_File.md` 时，请确保其内容全面、组织良好，并遵循 `prompts/02_Utility_Prompts_And_Format_Definitions/Handover_Artifact_Formats.md` 中的结构。包括所有关键决策、最近的日志、计划状态和当前的阻碍因素。
+*   **原因 B：`Handover_Prompt.md` 不清晰或未能正确引导新代理。**
+    *   **解决方案：** `Handover_Prompt.md` 必须明确指示新代理在继续之前彻底审查 `Handover_File.md`，然后验证其理解。
+*   **验证步骤是关键：** 不要跳过新代理向您（用户）总结其对项目状态和当前任务的理解以供确认的步骤。如果总结有误，则交接未完全成功，在新代理接管之前可能需要进一步澄清或完善交接产物。
 
-If you encounter other issues, please consider contributing them to this guide or raising an issue in the project repository. 
+如果您遇到其他问题，请考虑将它们贡献给本指南或在项目仓库中提出问题。 

@@ -1,217 +1,217 @@
-# APM Implementation Plan Formatting Guide
+# APM 实施计划格式化指南
 
-## 1. Purpose
+## 1. 目的
 
-This guide provides the definitive formatting standard and best practices for constructing the `Implementation_Plan.md` file within the Agentic Project Management (APM) framework. As the Manager Agent, creating this document is a core responsibility outlined in your initiation protocol (Phase B: Strategic Planning). Following your presentation of a high-level plan summary and Memory Bank proposal to the User (and their implicit approval by not immediately requesting changes to that summary/proposal), you will use this guide to generate the **full content** of the `Implementation_Plan.md` file. This document translates the project's strategic objectives into a detailed, actionable blueprint for all agents.
+本指南为在代理项目管理 (APM) 框架内构建 `Implementation_Plan.md` 文件提供了权威的格式化标准和最佳实践。作为经理代理，创建此文档是您的启动协议（阶段 B：战略规划）中概述的核心职责。在您向用户呈现了高级计划摘要和内存库提案（并且他们通过不立即请求对该摘要/提案进行更改而默示批准）之后，您将使用本指南生成 `Implementation_Plan.md` 文件的**完整内容**。该文档将项目的战略目标转化为所有代理都可操作的详细蓝图。
 
-Adherence to this standard ensures clarity, consistency, effective task tracking, and robust project management.
+遵守此标准可确保清晰性、一致性、有效的任务跟踪和稳健的项目管理。
 
-## 2. Core Principles
+## 2. 核心原则
 
-*   **Clarity:** The plan must be easily understandable by the User, the Manager Agent (current and future), and all Implementation/Specialized Agents.
-*   **Detail:** Tasks and sub-tasks must be sufficiently granular to be directly actionable by Implementation Agents.
-*   **Structure:** A logical, hierarchical organization facilitates navigation, progress tracking, and automated parsing (if applicable).
-*   **Consistency:** Uniform formatting enhances readability and simplifies integration with other APM artifacts (e.g., Memory Bank logs, Task Assignment Prompts).
-*   **Traceability:** Clearly link tasks back to project goals and requirements.
-*   **Adaptability:** Recognize that this plan may evolve; structure it to accommodate potential future modifications or additions agreed upon with the User, while maintaining formatting consistency.
+*   **清晰性：** 计划必须易于用户、经理代理（当前和未来）以及所有实施/专业代理理解。
+*   **详细性：** 任务和子任务必须足够细化，以便实施代理直接操作。
+*   **结构化：** 逻辑化、层次化的组织便于导航、进度跟踪和自动解析（如果适用）。
+*   **一致性：** 统一的格式可以提高可读性，并简化与其他 APM 产物（例如，内存库日志、任务分配提示）的集成。
+*   **可追溯性：** 将任务明确地链接回项目目标和需求。
+*   **适应性：** 认识到此计划可能会演变；构建它以适应未来与用户商定的潜在修改或补充，同时保持格式的一致性。
 
-## 2.5 Prerequisite: User Approval of Plan Structure
+## 2.5 先决条件：用户批准计划结构
 
-**CRITICAL:** Before applying the detailed formatting rules below, you **must** have presented the proposed *structure* of the implementation plan (including phases, major tasks, and conceptual agent assignments) to the User and received their explicit approval. This guide details how to format that *approved* structure, not how to initially devise it.
+**关键：** 在应用下面的详细格式化规则之前，您**必须**已向用户呈现了实施计划的提议*结构*（包括阶段、主要任务和概念性代理分配），并获得了他们的明确批准。本指南详细说明了如何格式化该*已批准的*结构，而不是如何最初设计它。
 
-## 3. Formatting Standard (Markdown)
+## 3. 格式化标准 (Markdown)
 
-Utilize standard Markdown syntax. The following structure is mandated:
+使用标准的 Markdown 语法。以下结构是强制性的：
 
-### 3.1. Overall Structure
+### 3.1. 总体结构
 
-*   The document must start with a Level 1 Heading (`# Implementation Plan`).
-*   A brief (1-2 sentence) introductory summary of the overall project goal is required.
+*   文档必须以一级标题 (`# 实施计划`) 开头。
+*   需要对整个项目目标进行简短（1-2 句）的介绍性总结。
 
-### 3.2. Phased Structure (For Large/Complex Projects)
+### 3.2. 分阶段结构（适用于大型/复杂项目）
 
-*   If the project warrants division into phases (as determined during discovery and approved by the User), use Level 2 Headings (`##`) for each phase.
-*   Include the phase number and a descriptive title (e.g., `## Phase 1: Backend Setup`).
-*   **Recommended:** Assign a conceptual "Agent Group" to the phase for high-level planning (e.g., `Agent Group Alpha`). This assignment is illustrative and aids planning.
-    *   **Format Example:** `## Phase 1: Core Backend Setup - Agent Group Alpha (Agent A, Agent B)`
+*   如果项目需要分阶段（在发现期间确定并由用户批准），请为每个阶段使用二级标题 (`##`)。
+*   包括阶段编号和描述性标题（例如，`## 阶段 1：后端设置`）。
+*   **推荐：** 为高级规划为阶段分配一个概念性的"代理组"（例如，`代理组 Alpha`）。此分配是说明性的，有助于规划。
+    *   **格式示例：** `## 阶段 1：核心后端设置 - 代理组 Alpha (代理 A, 代理 B)`
 
-### 3.3. Task Definition
+### 3.3. 任务定义
 
-*   Use Level 3 Headings (`###`) for each major task within a phase (or directly under the main heading if not phased).
-*   Include a task identifier (e.g., `Task A`, `Task B`, `Task 1.1`) and a concise, descriptive title.
-    *   Use a consistent identifier scheme distinct from Implementation Agent IDs.
-*   **CRITICAL: Explicit Agent Assignment per Task:**
-    *   For EVERY task, you *MUST* explicitly assign one or more Implementation Agents responsible for its execution. This is non-negotiable for a functional multi-agent workflow.
-    *   **Consider Task Distribution:** Reflect on the project's needs. Does the task require a specific skill (e.g., frontend, data analysis, testing)? Could different tasks be handled by different specialized agents for efficiency or to parallelize work? Avoid defaulting all tasks to a single generic agent if the project benefits from specialization or distribution. Define clear, distinct agent identifiers (e.g., `Agent_Frontend_Dev`, `Agent_Data_Processor`, `Agent_QA`).
-    *   The assigned agent identifier(s) become integral to task tracking and prompt generation.
-    *   **Format (Single Agent):** `### Task A - Agent_XYZ: [Descriptive Task Title]` (e.g., `### Task 1.1 - Agent_Setup_Specialist: Environment Configuration`)
-    *   **Format (Multiple Cooperating Agents on the Same Task):** `### Task B (Complex) - Agent_ABC & Agent_DEF: [Descriptive Task Title]`
-*   Follow the heading with a brief (1-2 sentence) description stating the task's objective.
+*   为每个阶段内的主要任务（或者如果未分阶段，则直接在主标题下）使用三级标题 (`###`)。
+*   包括任务标识符（例如，`任务 A`、`任务 B`、`任务 1.1`）和一个简洁的、描述性的标题。
+    *   使用与实施代理 ID 不同的、一致的标识符方案。
+*   **关键：每个任务明确的代理分配：**
+    *   对于每个任务，您*必须*明确分配一个或多个负责其执行的实施代理。对于功能性的多代理工作流程，这是不可协商的。
+    *   **考虑任务分配：** 反思项目的需求。该任务是否需要特定技能（例如，前端、数据分析、测试）？不同的任务是否可以由不同的专业代理处理以提高效率或并行工作？如果项目受益于专业化或分配，请避免将所有任务默认分配给单个通用代理。定义清晰、独特的代理标识符（例如，`代理_前端_开发`、`代理_数据_处理器`、`代理_QA`）。
+    *   分配的代理标识符成为任务跟踪和提示生成的组成部分。
+    *   **格式（单个代理）：** `### 任务 A - 代理_XYZ：[描述性任务标题]`（例如，`### 任务 1.1 - 代理_设置_专家：环境配置`）
+    *   **格式（多个合作代理在同一任务上）：** `### 任务 B (复杂) - 代理_ABC 和 代理_DEF：[描述性任务标题]`
+*   在标题后附上简短（1-2 句）的描述，说明任务的目标。
 
-### 3.4. Sub-Task Decomposition
+### 3.4. 子任务分解
 
-*   Use Markdown ordered lists (`1.`, `2.`, `3.`) for logical sub-components or stages within each main task.
-*   **Detailed Action Steps with Critical Guidance:** Within each numbered sub-component, use nested bullet points (`-` or `*`) to list the specific, fine-grained actions. 
-    *   **Crucial Detail for Consistency:** For these nested action steps, if a specific method, library, algorithm, parameter, or approach is critical for the task's success or for consistency with subsequent tasks, include a *brief guiding note*. This is not meant to be a full instruction set (that belongs in the task assignment prompt) but rather a key constraint or pointer.
-    *   **Example of Guiding Note:**
-        *   `- Implement data tokenization for user reviews.`
-            *   `Guidance: Use DistilBERT tokenizer ('distilbert-base-uncased') to align with the planned sentiment model.`
-        *   `- Store processed data.`
-            *   `Guidance: Output to a Parquet file named 'processed_reviews.parquet'.`
-    *   These guiding notes ensure that subsequent agents don't have to guess critical choices made earlier or go down an incompatible path.
-    *   The detailed breakdown and these guiding notes are crucial as they directly inform the content of the `Task Assignment Prompts` (see `03_Task_Assignment_Prompts_Guide.md`).
-*   Each nested bullet point (and its optional guiding note) should represent a distinct, actionable step or check for the Implementation Agent.
-*   **Appropriate Detail and Context:** Ensure the nested action steps (and their guiding notes) reflect specifics derived from the project discovery, requirements, and approved plan. Incorporate necessary high-level details like critical error handling specifics to be considered, key validation rules, or integration points.
-*   For tasks with multiple assigned agents, clearly mark which agent is responsible for each **numbered sub-component** using parentheses.
-*   **Format Examples:**
-    *   **Single Agent Task:**
+*   对于每个主要任务中的逻辑子组件或阶段，使用 Markdown 有序列表（`1.`、`2.`、`3.`）。
+*   **带有关键指导的详细操作步骤：** 在每个编号的子组件中，使用嵌套的项目符号（`-` 或 `*`）列出具体的、细粒度的操作。
+    *   **一致性的关键细节：** 对于这些嵌套的操作步骤，如果特定的方法、库、算法、参数或方法对于任务的成功或与后续任务的一致性至关重要，请包含一个*简短的指导说明*。这并非旨在成为完整的指令集（这属于任务分配提示），而是一个关键的约束或指针。
+    *   **指导说明示例：**
+        *   `- 实现用户评论的数据分词。`
+            *   `指导：使用 DistilBERT 分词器 ('distilbert-base-uncased') 以与计划的情感模型保持一致。`
+        *   `- 存储处理后的数据。`
+            *   `指导：输出到名为 'processed_reviews.parquet' 的 Parquet 文件。`
+    *   这些指导说明确保后续代理不必猜测之前做出的关键选择或走上不兼容的路径。
+    *   详细的分解和这些指导说明至关重要，因为它们直接为`任务分配提示`的内容提供信息（请参阅 `03_Task_Assignment_Prompts_Guide.md`）。
+*   每个嵌套的项目符号（及其可选的指导说明）应代表实施代理的一个独特的、可操作的步骤或检查。
+*   **适当的细节和上下文：** 确保嵌套的操作步骤（及其指导说明）反映了源自项目发现、需求和批准计划的具体细节。结合必要的高级细节，如要考虑的关键错误处理细节、关键验证规则或集成点。
+*   对于具有多个分配代理的任务，使用括号清楚地标记每个**编号子组件**由哪个代理负责。
+*   **格式示例：**
+    *   **单个代理任务：**
         ```markdown
-        1.  Design database schema for User entity.
-            - Define fields: user_id (PK), username (unique), email (unique), password_hash, created_at.
-            - Specify data types and constraints.
-        2.  Create database migrations.
-            - Generate migration file using the ORM tool.
-            - Write migration script to create the User table.
-            - Write rollback script.
+        1.  为用户实体设计数据库模式。
+            - 定义字段：user_id (PK), username (unique), email (unique), password_hash, created_at。
+            - 指定数据类型和约束。
+        2.  创建数据库迁移。
+            - 使用 ORM 工具生成迁移文件。
+            - 编写迁移脚本以创建用户表。
+            - 编写回滚脚本。
         ```
-    *   **Multi-Agent Task:**
+    *   **多代理任务：**
         ```markdown
-        1.  (Agent A) Research and evaluate potential API providers.
-            - Identify 3-5 potential geolocation API services.
-            - Document API features, pricing, and rate limits for each.
-            - Provide a recommendation based on project requirements.
-        2.  (Agent B) Implement client library for the selected API.
-            - Create API client module.
-            - Implement functions for primary API endpoints needed.
-            *   Include necessary error handling for network timeouts, API errors (e.g., 4xx, 5xx), and invalid responses.
-        3.  (Agent C) Write API integration tests.
-            - Set up testing environment with mock API or sandbox keys.
-            - Write tests covering primary success paths (e.g., valid address lookup).
-            - Write tests for common failure modes (e.g., invalid API key, address not found, rate limiting).
+        1.  (代理 A) 研究和评估潜在的 API 提供商。
+            - 确定 3-5 个潜在的地理定位 API 服务。
+            - 记录每个服务的 API 功能、定价和速率限制。
+            - 根据项目需求提供建议。
+        2.  (代理 B) 为所选 API 实现客户端库。
+            - 创建 API 客户端模块。
+            - 为所需的主要 API 端点实现函数。
+            *   包括必要的错误处理，用于处理网络超时、API 错误（例如，4xx、5xx）和无效响应。
+        3.  (代理 C) 编写 API 集成测试。
+            - 使用模拟 API 或沙箱密钥设置测试环境。
+            - 编写覆盖主要成功路径的测试（例如，有效的地址查找）。
+            - 编写针对常见故障模式的测试（例如，无效的 API 密钥、未找到地址、速率限制）。
         ```
-*   Strive for a balance where numbered sub-components represent logical stages, and nested bullets provide the necessary implementation detail.
+*   力求在编号的子组件代表逻辑阶段和嵌套的项目符号提供必要的实施细节之间取得平衡。
 
-## 4. Example Snippet
+## 4. 示例片段
 
 ```markdown
-# Implementation Plan
+# 实施计划
 
-Project Goal: Develop a web application for tracking personal fitness activities.
+项目目标：开发一个用于跟踪个人健身活动的 Web 应用程序。
 
-## Phase 1: Core Backend Setup - Agent Group Alpha (Agent A, Agent B)
+## 阶段 1：核心后端设置 - 代理组 Alpha (代理 A, 代理 B)
 
-### Task A - Agent A: User Authentication Module
-Objective: Implement secure user registration, login, and session management.
+### 任务 A - 代理 A：用户身份验证模块
+目标：实现安全的用户注册、登录和会话管理。
 
-1.  Design User entity schema and migrations.
-    - Define fields: user_id (PK), email (unique, indexed), password_hash, full_name, created_at, updated_at.
-    - Specify appropriate data types and constraints (e.g., non-null, length limits).
-    - Generate migration file using ORM.
-    - Write up/down migration scripts.
-2.  Implement Registration Endpoint.
-    - Create API route (e.g., POST /api/users/register).
-    - Implement request body validation (email format, password complexity).
-    - Hash user password securely (e.g., using bcrypt).
-    - Store new user record in the database.
-    - Return appropriate success response or validation errors.
-3.  Implement Login Endpoint.
-    - Create API route (e.g., POST /api/auth/login).
-    - Validate request body (email, password).
-    - Retrieve user by email from the database.
-    - Verify provided password against the stored hash.
-    - Generate JWT or session token upon successful authentication.
-    - Return token and user information (excluding sensitive data).
-4.  Implement Session Validation Middleware.
-    - Create middleware function for protected routes.
-    - Extract token from request headers or cookies.
-    - Validate token signature and expiration.
-    - Attach authenticated user information to the request object.
-    - Return 401/403 error if token is invalid or missing.
+1.  设计用户实体模式和迁移。
+    - 定义字段：user_id (PK), email (unique, indexed), password_hash, full_name, created_at, updated_at。
+    - 指定适当的数据类型和约束（例如，非空，长度限制）。
+    - 使用 ORM 生成迁移文件。
+    - 编写向上/向下迁移脚本。
+2.  实现注册端点。
+    - 创建 API 路由（例如，POST /api/users/register）。
+    - 实现请求正文验证（电子邮件格式，密码复杂度）。
+    - 安全地哈希用户密码（例如，使用 bcrypt）。
+    - 将新用户记录存储在数据库中。
+    - 返回适当的成功响应或验证错误。
+3.  实现登录端点。
+    - 创建 API 路由（例如，POST /api/auth/login）。
+    - 验证请求正文（电子邮件、密码）。
+    - 从数据库中按电子邮件检索用户。
+    - 根据存储的哈希验证提供的密码。
+    - 成功验证后生成 JWT 或会话令牌。
+    - 返回令牌和用户信息（不包括敏感数据）。
+4.  实现会话验证中间件。
+    - 为受保护的路由创建中间件函数。
+    - 从请求头或 cookie 中提取令牌。
+    - 验证令牌签名和到期时间。
+    - 将经过身份验证的用户信息附加到请求对象。
+    - 如果令牌无效或缺失，则返回 401/403 错误。
 
-### Task B (Complex) - Agents A & B: Activity Logging API
-Objective: Create API endpoints for logging, retrieving, and managing fitness activities.
+### 任务 B (复杂) - 代理 A 和 B：活动记录 API
+目标：创建用于记录、检索和管理健身活动的 API 端点。
 
-1.  (Agent A) Design Activity entity schema and migrations.
-    - Define fields: activity_id (PK), user_id (FK), activity_type (enum: run, walk, cycle), duration_minutes, distance_km, activity_date, notes (optional text), created_at.
-    - Define relationships and indexes (e.g., index on user_id and activity_date).
-    - Generate and write migration scripts.
-2.  (Agent B) Implement Create Activity Endpoint.
-    - Create API route (e.g., POST /api/activities).
-    - Apply authentication middleware.
-    - Validate request body (activity type, numeric fields > 0, valid date).
-    - Associate activity with the authenticated user (user_id).
-    - Save the new activity record to the database.
-    - Return the created activity object or success status.
-3.  (Agent B) Implement Get Activity History Endpoint.
-    - Create API route (e.g., GET /api/activities).
-    - Apply authentication middleware.
-    - Retrieve activities for the authenticated user, ordered by date descending.
-    - Implement pagination (e.g., using query parameters `?page=1&limit=10`).
-    - Return paginated list of activities.
-4.  (Agent A) Implement Delete Activity Endpoint.
-    - Create API route (e.g., DELETE /api/activities/:activityId).
-    *   Apply authentication middleware.
-    *   Verify that the activity belongs to the authenticated user before deletion.
-    *   Delete the specified activity record.
-    *   Return success status or appropriate error (e.g., 404 Not Found, 403 Forbidden).
+1.  (代理 A) 设计活动实体模式和迁移。
+    - 定义字段：activity_id (PK), user_id (FK), activity_type (enum: run, walk, cycle), duration_minutes, distance_km, activity_date, notes (可选文本), created_at。
+    - 定义关系和索引（例如，在 user_id 和 activity_date 上建立索引）。
+    - 生成并编写迁移脚本。
+2.  (代理 B) 实现创建活动端点。
+    - 创建 API 路由（例如，POST /api/activities）。
+    - 应用身份验证中间件。
+    - 验证请求正文（活动类型，数值字段 > 0，有效日期）。
+    - 将活动与经过身份验证的用户关联（user_id）。
+    - 将新的活动记录保存到数据库。
+    - 返回创建的活动对象或成功状态。
+3.  (代理 B) 实现获取活动历史记录端点。
+    - 创建 API 路由（例如，GET /api/activities）。
+    - 应用身份验证中间件。
+    - 检索经过身份验证的用户的活动，按日期降序排序。
+    - 实现分页（例如，使用查询参数 `?page=1&limit=10`）。
+    - 返回分页的活动列表。
+4.  (代理 A) 实现删除活动端点。
+    - 创建 API 路由（例如，DELETE /api/activities/:activityId）。
+    *   应用身份验证中间件。
+    *   在删除之前验证活动是否属于经过身份验证的用户。
+    *   删除指定的活动记录。
+    *   返回成功状态或适当的错误（例如，404 Not Found, 403 Forbidden）。
 
-## Phase 2: Frontend Development - Agent Group Beta (Agent C)
+## 阶段 2：前端开发 - 代理组 Beta (代理 C)
 
-### Task C - Agent C: User Interface Implementation
-Objective: Build the user interface components for interacting with the backend API.
+### 任务 C - 代理 C：用户界面实现
+目标：构建用于与后端 API 交互的用户界面组件。
 
-1.  Set up Frontend Project.
-    - Initialize project using chosen framework (e.g., `create-react-app`).
-    - Configure routing library.
-    - Set up state management solution (if needed).
-    - Establish base styles or UI library.
-2.  Implement Authentication Forms.
-    - Create Registration form component.
-    - Create Login form component.
-    - Implement form validation (client-side).
-    - Handle API calls for registration and login.
-    - Manage authentication state (e.g., storing tokens).
-3.  Implement Activity Dashboard.
-    - Create component to display list of activities.
-    - Implement API call to fetch user's activity history.
-    - Handle pagination controls.
-    - Implement UI for deleting an activity.
-4.  Implement New Activity Form/Modal.
-    - Create component for the form.
-    - Include fields for activity type, duration, distance, date, notes.
-    - Implement form validation.
-    - Handle API call to create a new activity.
-    - Update dashboard upon successful creation.
+1.  设置前端项目。
+    - 使用选定的框架初始化项目（例如，`create-react-app`）。
+    - 配置路由库。
+    - 设置状态管理解决方案（如果需要）。
+    - 建立基本样式或 UI 库。
+2.  实现身份验证表单。
+    - 创建注册表单组件。
+    - 创建登录表单组件。
+    - 实现表单验证（客户端）。
+    - 处理用于注册和登录的 API 调用。
+    - 管理身份验证状态（例如，存储令牌）。
+3.  实现活动仪表板。
+    - 创建组件以显示活动列表。
+    - 实现 API 调用以获取用户的活动历史记录。
+    - 处理分页控件。
+    - 实现用于删除活动的 UI。
+4.  实现新建活动表单/模态框。
+    - 为表单创建组件。
+    - 包括活动类型、持续时间、距离、日期、备注的字段。
+    - 实现表单验证。
+    - 处理用于创建新活动的 API 调用。
+    - 成功创建后更新仪表板。
 
 ```
 
-## 5. Final Considerations
+## 5. 最终考虑事项
 
-*   **Consistency is Key:** Ensure uniform application of headings, lists, agent assignments, and formatting throughout the document.
-*   **Generate After High-Level Summary:** Generate this file's full content based on the high-level plan structure and Memory Bank concept you have already summarized to the User. The User will be invited to review and suggest modifications to *this generated file* subsequently.
-*   **Clarity and Detail:** While the initial summary to the User is high-level, *this file* must contain sufficient detail for Implementation Agents to understand their tasks, scope, and objectives clearly.
-*   **Memory Bank Structure Record:** Crucially, after the Memory Bank system (single-file or multi-file directory) has been determined and proposed by you (the Manager Agent) by following `prompts/01_Manager_Agent_Core_Guides/02_Memory_Bank_Guide.md`, and subsequently agreed upon with the User, you **must** include a dedicated subsection within this `Implementation_Plan.md` (e.g., under "General Project Notes" or as a distinct section if complex). This subsection must explicitly state the agreed-upon Memory Bank structure (e.g., "Memory Bank System: Single file `Memory_Bank.md`" or "Memory Bank System: Directory `/Memory/` with log files per phase, such as `Memory/Phase1_Design_Log.md`, as detailed in `Memory/README.md`."). This ensures all agents are aware of the established logging structure and where to find or create log entries.
-*   **Iterative Refinement:** Be prepared to update this document based on User feedback or as the project evolves (following appropriate change management discussions).
+*   **一致性是关键：** 确保在整个文档中统一应用标题、列表、代理分配和格式。
+*   **在高级摘要后生成：** 根据您已经向用户总结的高级计划结构和内存库概念生成此文件的完整内容。随后将邀请用户审查并建议对*此生成的文件*进行修改。
+*   **清晰度和详细性：** 虽然给用户的初始摘要是高级的，但*此文件*必须包含足够的细节，以便实施代理清楚地了解其任务、范围和目标。
+*   **内存库结构记录：** 至关重要的是，在您（经理代理）遵循 `prompts/01_Manager_Agent_Core_Guides/02_Memory_Bank_Guide.md` 确定并提议内存库系统（单文件或多文件目录），并随后与用户达成一致后，您**必须**在此 `Implementation_Plan.md` 中包含一个专门的小节（例如，在"常规项目说明"下，或者如果复杂则作为一个独立的节）。该小节必须明确说明商定的内存库结构（例如，"内存库系统：单个文件 `Memory_Bank.md`"或"内存库系统：目录 `/Memory/`，每个阶段都有日志文件，例如 `Memory/Phase1_Design_Log.md`，如 `Memory/README.md` 中详述。"）。这可确保所有代理都了解已建立的日志记录结构以及在何处查找或创建日志条目。
+*   **迭代优化：** 准备好根据用户反馈或项目演变（在进行适当的变更管理讨论后）更新此文档。
 
-By following this guide, you will produce `Implementation_Plan.md` files that are comprehensive, clear, and serve as a reliable foundation for project execution.
+通过遵循本指南，您将生成全面、清晰的 `Implementation_Plan.md` 文件，并作为项目执行的可靠基础。
 
-## 6. Post-Plan Generation: Next Steps & Ongoing Management
+## 6. 计划生成后：后续步骤和持续管理
 
-Once the `Implementation_Plan.md` is created and approved:
+一旦 `Implementation_Plan.md` 创建并获得批准：
 
-*   **Task Assignment Prompt Generation:** For each task assigned to an Implementation Agent, you will assist the User in crafting a precise prompt. Refer to the `prompts/01_Manager_Agent_Core_Guides/03_Task_Assignment_Prompts_Guide.md` (if available) for detailed instructions on structuring these prompts effectively. If the guide is unavailable, generate clear, actionable prompts based on the task and sub-task details in this plan.
-*   **Review and Feedback Cycle:** As Implementation Agents complete tasks and log their work to the Memory Bank, you are responsible for reviewing their outputs. Refer to the `prompts/01_Manager_Agent_Core_Guides/04_Review_And_Feedback_Guide.md` (if available) for guidance on conducting reviews and providing constructive feedback. If unavailable, perform reviews based on the task objectives and general best practices.
-*   **Handover Protocol Reference (Crucial):** To ensure project continuity and awareness of context management procedures, you **must include** a dedicated section at the *end* of the generated `Implementation_Plan.md` file itself. This section should briefly explain the purpose of the Handover Protocol and provide an explicit reference to its detailed guide.
-    *   **Example text to include in `Implementation_Plan.md`:**
+*   **任务分配提示生成：** 对于分配给实施代理的每个任务，您将协助用户制作精确的提示。参考 `prompts/01_Manager_Agent_Core_Guides/03_Task_Assignment_Prompts_Guide.md`（如果可用），了解如何有效地构建这些提示。如果指南不可用，请根据此计划中的任务和子任务详细信息生成清晰、可操作的提示。
+*   **审查和反馈循环：** 作为实施代理完成任务并将其工作记录到内存库时，您有责任进行审查。参考 `prompts/01_Manager_Agent_Core_Guides/04_Review_And_Feedback_Guide.md`（如果可用），了解如何进行审查并提供建设性反馈。如果不可用，请根据任务目标和一般最佳实践执行审查。
+*   **交接协议参考（关键）：** 为了确保项目连续性和上下文管理程序的意识，您**必须**在生成的 `Implementation_Plan.md` 文件末尾包含一个专门的部分。此部分应简要解释交接协议的目的，并提供对其详细指南的明确引用。
+    *   **示例文本包括在 `Implementation_Plan.md` 中：**
         ```markdown
         ---
-        ## Note on Handover Protocol
+        ## 注意交接协议
 
-        For long-running projects or situations requiring context transfer (e.g., exceeding LLM context limits, changing specialized agents), the APM Handover Protocol should be initiated. This ensures smooth transitions and preserves project knowledge. Detailed procedures are outlined in the framework guide:
+        对于长时间运行的项目或需要上下文转移的情况（例如，超出 LLM 上下文限制，改变专业代理），应启动 APM 交接协议。这可确保顺利过渡并保留项目知识。框架指南中详细说明了详细程序：
 
         `prompts/01_Manager_Agent_Core_Guides/05_Handover_Protocol_Guide.md`
 
-        The current Manager Agent or the User should initiate this protocol as needed.
+        当前经理代理或用户应根据需要启动此协议。
         ```
 
-Proceed with generating the `Implementation_Plan.md` content, meticulously applying these formatting standards and including the Handover Protocol reference section. 
+继续生成 `Implementation_Plan.md` 内容，精心应用这些格式化标准并包括交接协议参考部分。 

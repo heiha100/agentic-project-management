@@ -1,62 +1,62 @@
-# Agentic Project Management (APM) Framework
+# 代理项目管理 (APM) 框架
 
-**A Structured, Efficient Multi-Agent Workflow for Complex Project Execution with AI Assistants.**
+**一个结构化、高效的多代理工作流程，用于通过 AI 助手执行复杂项目。**
 
-## What is APM?
+## 什么是 APM？
 
-Agentic Project Management (APM) is a collection of tested prompts, standardized format definitions, procedure protocols and recommended workflow practices designed to bring structure and efficiency to complex projects executed with Large Language Model (LLM) based AI assistants, particularly using tools like Cursor IDE.
+代理项目管理 (APM) 是一系列经过测试的提示、标准化的格式定义、程序协议和推荐的工作流程实践，旨在为使用大型语言模型 (LLM) 的 AI 助手执行的复杂项目带来结构和效率，特别是使用像 Cursor IDE 这样的工具时。
 
-It provides a robust, repeatable methodology for leveraging multiple AI Agent instances in collaboration, mirroring established **real-life project management principles** (workload breakdown, role assignment, progress tracking, context transfer & onboarding ) adapted for the unique capabilities and limitations of current AI models.
+它提供了一个强大、可重复的方法，以协作方式利用多个 AI 代理实例，模仿了为当前 AI 模型的独特能力和局限性而调整的既定**现实生活中的项目管理原则**（工作量分解、角色分配、进度跟踪、上下文转移和入职）。
 
-## The Problem APM Solves
+## APM 解决的问题
 
-While powerful, using AI assistants for large, multi-step projects often encounters challenges:
+虽然功能强大，但在大型、多步骤项目中使用 AI 助手通常会遇到挑战：
 
-*   **Context Window Limits:** Long conversations exceed the AI model's memory, leading to forgotten instructions and inconsistent behavior, what we call *"hallucinations."
-*   **Lack of Structure:** Ad-hoc prompting can become chaotic, making it difficult to track progress or ensure all requirements are met.
-*   **Coordination Issues:** Managing multiple separate AI chat sessions working on different parts of a project is cumbersome and error-prone.
-*   **Inefficiency:** Unstructured approaches can lead to redundant conversations, ultimately slowing progress and hurting productivity. On the other hand, "too-sophisticated" workflows lead to excessive API calls and token usage, resulting in exponentially rising running costs.
+*   **上下文窗口限制：** 长对话超出了 AI 模型的内存，导致指令被遗忘和行为不一致，我们称之为"幻觉"。
+*   **缺乏结构：** 临时的提示可能会变得混乱，难以跟踪进度或确保满足所有要求。
+*   **协调问题：** 管理多个独立的 AI 聊天会话来处理项目的不同部分是繁琐且容易出错的。
+*   **效率低下：** 非结构化的方法可能导致冗余的对话，最终减慢进度并损害生产力。另一方面，"过于复杂"的工作流程会导致过多的 API 调用和令牌使用，从而导致运行成本呈指数级增长。
 
-APM addresses these issues by providing a clear framework that prioritizes **structured interaction, explicit context management, and efficient, targeted prompt engineering.**.
+APM 通过提供一个清晰的框架来解决这些问题，该框架优先考虑**结构化交互、显式上下文管理和高效、有针对性的提示工程**。
 
-## APM's Solution: Core Concepts Overview
+## APM 的解决方案：核心概念概述
 
-APM employs a multi-agent system built on a few key concepts:
+APM 采用了一个基于几个关键概念的多代理系统：
 
-1.  **Manager Agent:** A central AI instance responsible for understanding project goals, creating a detailed `Implementation_Plan.md`, assisting the User in generating prompts for other agents, reviewing completed work, and managing the overall workflow.
-2.  **Implementation / Specialized Agents:** Dedicated AI instances tasked with executing specific parts of the Implementation Plan (e.g., writing code, debugging, analyzing data, writing documentation).
-3.  **Memory Bank (`Memory_Bank.md`):** One or more designated Markdown files acting as a persistent, chronological, and structured logs. All significant actions, outputs, decisions, and errors are recorded here by the agents, providing shared context and an auditable history.
-4.  **Handover Protocol:** A defined procedure using a `Handover_File.md` (context dump) and `Handover_Prompt.md` (initialization) to seamlessly transfer project state and responsibilities between agent instances (e.g., when a Manager hits context limits or when tasks transition between specialized agents).
+1.  **经理代理：** 一个中央 AI 实例，负责理解项目目标、创建详细的 `Implementation_Plan.md`、协助用户为其他代理生成提示、审查已完成的工作以及管理整个工作流程。
+2.  **实施/专门代理：** 专用的 AI 实例，负责执行实施计划的特定部分（例如，编写代码、调试、分析数据、编写文档）。
+3.  **内存库 (`Memory_Bank.md`)：** 一个或多个指定的 Markdown 文件，用作持久、按时间顺序排列的结构化日志。所有重要的操作、输出、决策和错误都由代理在此处记录，提供共享的上下文和可审计的历史记录。
+4.  **交接协议：** 一个使用 `Handover_File.md`（上下文转储）和 `Handover_Prompt.md`（初始化）的已定义程序，以在代理实例之间无缝转移项目状态和责任（例如，当经理达到上下文限制或任务在专门代理之间转换时）。
 
-These components work together to promote separation of concerns, facilitate clear communication (mediated by the User), and maintain project coherence over time.
+这些组件协同工作，以促进关注点分离，促进清晰的沟通（由用户调解），并随时间保持项目的一致性。
 
-## Who is this for?
+## 这是为谁准备的？
 
-APM is designed for:
+APM 专为以下人群设计：
 
-*   Developers, researchers, project managers, students, technical writers... and anyone using AI assistants for substantial projects involving coding, analysis, writing, content creation and more..
-*   Individuals seeking to move beyond simple Q&A and leverage AI for more complex, structured work.
-*   Users who value organization, traceability, efficiency, and reliability in their AI-driven workflows.
+*   开发人员、研究人员、项目经理、学生、技术文档工程师……以及任何使用 AI 助手进行涉及编码、分析、写作、内容创作等实质性项目的人。
+*   希望超越简单问答并利用 AI 进行更复杂、结构化工作的个人。
+*   在其 AI 驱动的工作流程中重视组织、可追溯性、效率和可靠性的用户。
 
-## What's in this Repository?
+## 这个仓库里有什么？
 
-*   `/prompts`: Contains the core prompts for initializing agents (Manager & Implementation Agents), guides for key Manager actions (planning, task assignment, review, handover guides), and format & protocol definitions for critical artifacts (Memory Bank logs, Handover files). These are designed to be copied and used directly or adapted on the User's needs.
-*   `/docs`: Comprehensive documentation (like this file!) explaining the framework, core concepts, getting started procedures, customization options, and troubleshooting tips.
-*   `/rules`: (Optional) Provides a collection of pre-defined [Cursor Rules](https://docs.cursor.com/context/rules) (`.mdc` files) designed to enhance APM workflow reliability and agent consistency when used within the Cursor IDE. See the [Cursor Integration Guide](04_Cursor_Integration_Guide.md) for usage.
-*   `/.github`: Includes standard GitHub community health files.
+*   `/prompts`: 包含用于初始化代理（经理和实施代理）的核心提示、关键经理操作（规划、任务分配、审查、交接指南）的指南，以及关键产物（内存库日志、交接文件）的格式和协议定义。这些旨在直接复制和使用，或根据用户的需求进行调整。
+*   `/docs`: 全面的文档（如此文件！），解释了框架、核心概念、入门程序、自定义选项和故障排除技巧。
+*   `/rules`: (可选) 提供了一系列预定义的 [Cursor 规则](https://docs.cursor.com/context/rules)（`.mdc` 文件），旨在在 Cursor IDE 中使用时增强 APM 工作流程的可靠性和代理一致性。有关用法，请参阅 [Cursor 集成指南](04_Cursor_Integration_Guide.md)。
+*   `/.github`: 包括标准的 GitHub 社区健康文件。
 
-## Getting Started & Next Steps
+## 入门和后续步骤
 
-Ready to try APM?
+准备好尝试 APM 了吗？
 
-*   **Conceptual Understanding:** Read the `01_Workflow_Overview.md` for a visual and descriptive walkthrough.
-*   **Practical Setup:** Follow the `02_Getting_Started.md` guide to set up a project using APM.
-*   **Deep Dive:** Explore `03_Core_Concepts.md` for detailed explanations of the Manager Agent, Memory Bank, etc.
+*   **概念理解：** 阅读 `01_Workflow_Overview.md` 以获得可视化和描述性的演练。
+*   **实际设置：** 按照 `02_Getting_Started.md` 指南使用 APM 设置项目。
+*   **深入了解：** 浏览 `03_Core_Concepts.md` 以获取有关经理代理、内存库等的详细说明。
 
-## Why APM?
+## 为什么选择 APM？
 
-*   **Structure & Organization:** Brings clarity and predictability to complex projects.
-*   **Enhanced Context Management:** Explicitly tackles LLM context limitations via the Handover Protocol.
-*   **Efficiency by Design:** The workflow is optimized to minimize redundant interactions, reducing API calls and token consumption compared to other multi-agent approaches.
-*   **Proven Effectiveness:** APM has been iteratively developed and **tested on real-world complex tasks** (my Uni assingments), demonstrating **excellent coordination between agents, significantly reduced errors, and minimized AI hallucinations**.
-*   **Scalability:** Suitable for managing larger and more intricate projects with AI.
+*   **结构与组织：** 为复杂项目带来清晰度和可预测性。
+*   **增强的上下文管理：** 通过交接协议明确解决 LLM 上下文限制。
+*   **设计效率：** 该工作流程经过优化，可最大限度地减少冗余交互，与其他多代理方法相比，减少了 API 调用和令牌消耗。
+*   **经证实的有效性：** APM 已在**现实世界的复杂任务**（我的大学作业）上进行了迭代开发和测试，展示了**代理之间的出色协调，显著减少了错误，并最大限度地减少了 AI 幻觉**。
+*   **可扩展性：** 适用于通过 AI 管理更大、更复杂的项目。

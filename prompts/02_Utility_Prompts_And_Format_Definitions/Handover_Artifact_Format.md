@@ -1,196 +1,196 @@
-# APM Handover Artifact Formats
+# APM 交接产物格式
 
-## 1. Introduction
+## 1. 引言
 
-This document specifies the standard Markdown formatting for the two key artifacts generated during the APM Handover Protocol (the procedure itself is detailed in `prompts/01_Manager_Agent_Core_Guides/05_Handover_Protocol_Guide.md`):
+本文档指定了在 APM 交接协议期间生成的两个关键产物的标准 Markdown 格式（协议本身在 `prompts/01_Manager_Agent_Core_Guides/05_Handover_Protocol_Guide.md` 中有详细说明）：
 
-1.  **`Handover_File.md`**: The comprehensive context dump from the outgoing agent.
-2.  **`Handover_Prompt.md`**: The initialization prompt for the incoming agent.
+1.  **`Handover_File.md`**：即将离任的代理的综合上下文转储。
+2.  **`Handover_Prompt.md`**：即将上任的代理的初始化提示。
 
-These formats apply to handovers involving **any type of agent** within the APM framework (Manager, Implementation, Specialized). Adherence to these structures is crucial for the successful transfer of project context and the seamless initialization of the new agent instance, regardless of the agent's role.
+这些格式适用于 APM 框架内涉及**任何类型的代理**（经理、实施、专业）的交接。遵守这些结构对于成功转移项目上下文和新代理实例的无缝初始化至关重要，无论代理的角色如何。
 
-This document serves as the definitive structural reference for whoever prepares the handover artifacts (typically the Manager Agent or the User).
+本文档是准备交接产物的人（通常是经理代理或用户）的权威结构参考。
 
-**Key Distinction:**
-*   The `Handover_File.md` is a **data repository** structuring the project's state and history for the incoming agent.
-*   The `Handover_Prompt.md` is an **instructional document** that bootstraps the new agent, guiding it on how to *use* the Handover File and resume project tasks.
+**主要区别：**
+*   `Handover_File.md` 是一个**数据存储库**，为即将上任的代理构建项目状态和历史。
+*   `Handover_Prompt.md` 是一个**指导性文档**，用于引导新代理，指导其如何*使用*交接文件并恢复项目任务。
 
-## 2. `Handover_File.md` Format (Context Dump)
+## 2. `Handover_File.md` 格式（上下文转储）
 
-This file should be structured using clear Markdown headings to organize the dumped context. The following sections represent the comprehensive format, primarily intended for a Manager Agent handover. For handovers involving Specialized Agents, certain sections may be simplified or omitted by the preparer to match the agent's specific scope (see Section 4 for more on variations).
+此文件应使用清晰的 Markdown 标题来组织转储的上下文。以下部分代表了综合格式，主要用于经理代理交接。对于涉及专业代理的交接，准备者可以简化或省略某些部分以匹配代理的特定范围（有关变体的更多信息，请参见第 4 节）。
 
 ```
-# APM Handover File - [Project Name/Identifier] - [Date]
+# APM 交接文件 - [项目名称/标识符] - [日期]
 
-## Section 1: Handover Overview
+## 第 1 节：交接概述
 
-*   **Outgoing Agent ID:** [e.g., Manager_Instance_1, Implementer_B_v1]
-*   **Incoming Agent ID:** [e.g., Manager_Instance_2, Implementer_B_v2] (If known)
-*   **Reason for Handover:** [e.g., Context Limit Reached, Task Completion & Reassignment, Strategic Replacement]
-*   **Memory Bank Configuration:**
-    *   **Location(s):** [List the relative path(s) to the project's Memory_Bank.md file(s) or `Memory/` directory, e.g., `./Memory_Bank.md` or `./Memory/`]
-    *   **Structure:** [e.g., Single file, Multi-file directory per phase]
-*   **Brief Project Status Summary:** [1-3 sentences on the current overall state relevant to the handover scope. For specialized agents, focus on their specific task area.]
+*   **即将离任的代理 ID：** [例如，Manager_Instance_1, Implementer_B_v1]
+*   **即将上任的代理 ID：** [例如，Manager_Instance_2, Implementer_B_v2] (如果已知)
+*   **交接原因：** [例如，达到上下文限制，任务完成并重新分配，战略性更换]
+*   **内存库配置：**
+    *   **位置：** [列出项目的 Memory_Bank.md 文件或 `Memory/` 目录的相对路径，例如 `./Memory_Bank.md` 或 `./Memory/`]
+    *   **结构：** [例如，单个文件，每个阶段一个多文件目录]
+*   **简要项目状态摘要：** [关于与交接范围相关的当前总体状态的 1-3 句话。对于专业代理，请关注其特定任务领域。]
 
-## Section 2: Project Goal & Current Objectives (Relevant Scope)
+## 第 2 节：项目目标和当前目标（相关范围）
 
-[For Manager Handovers, reiterate the main project goal and key current objectives. For Specialized Agents, state the goal of their *current specific task* or area of responsibility. Copy from original plan or provide current understanding.]
+[对于经理交接，重申主要项目目标和关键当前目标。对于专业代理，说明其*当前特定任务*或责任范围的目标。从原始计划复制或提供当前理解。]
 
-## Section 3: Implementation Plan Status (Relevant Scope)
+## 第 3 节：实施计划状态（相关范围）
 
-*   **Link to Main Plan:** [Relative path to the `Implementation_Plan.md`]
-*   **Current Phase/Focus:** [e.g., Phase 2: Frontend Development OR Task: Debugging login flow]
-*   **Completed Tasks (within current scope or recently):**
-    *   [Task ID/Reference from Plan relevant to this handover] - Status: Completed
+*   **主计划链接：** [到 `Implementation_Plan.md` 的相对路径]
+*   **当前阶段/重点：** [例如，阶段 2：前端开发或任务：调试登录流程]
+*   **已完成的任务（在当前范围内或最近）：**
+    *   [与此交接相关的计划中的任务 ID/参考] - 状态：已完成
     *   ...
-*   **Tasks In Progress (within current scope):**
-    *   [Task ID/Reference from Plan] - **Assigned Agent(s):** [Agent ID(s)] - **Current Status:** [Brief status, e.g., Coding underway, Blocked by X, Review pending]
+*   **正在进行的任务（在当前范围内）：**
+    *   [计划中的任务 ID/参考] - **分配的代理：** [代理 ID] - **当前状态：** [简要状态，例如，编码进行中，被 X 阻止，等待审查]
     *   ...
-*   **Upcoming Tasks (immediate next relevant to scope):**
-    *   [Task ID/Reference from Plan] - **Intended Agent(s):** [Agent ID(s)]
+*   **即将到来的任务（与范围相关的直接下一个）：**
+    *   [计划中的任务 ID/参考] - **预期的代理：** [代理 ID]
     *   ...
-*   **Deviations/Changes from Plan (Relevant Scope):** [Note any approved modifications relevant to the handover scope. State "None" if applicable.]
+*   **与计划的偏差/变更（相关范围）：** [注意与交接范围相关的任何批准的修改。如果适用，请注明"无"。]
 
-## Section 4: Key Decisions & Rationale Log (Relevant Scope)
+## 第 4 节：关键决策和理由日志（相关范围）
 
-[Summarize significant decisions relevant to the incoming agent's scope made since the last handover or task start. Focus on decisions impacting current or upcoming work.]
-*   **Decision:** [e.g., Choice of X library over Y for feature Z] - **Rationale:** [Brief justification] - **Approved By:** [User/Manager] - **Date:** [YYYY-MM-DD]
+[总结自上次交接或任务开始以来与即将上任的代理范围相关的重大决策。重点关注影响当前或即将到来的工作的决策。]
+*   **决策：** [例如，为功能 Z 选择 X 库而不是 Y] - **理由：** [简要理由] - **批准人：** [用户/经理] - **日期：** [YYYY-MM-DD]
 *   ...
 
-## Section 5: Active Agent Roster & Current Assignments (Manager Handovers)
+## 第 5 节：活动代理名册和当前任务（经理交接）
 
-[Typically for Manager Handovers. For specialized agents, this section might be omitted or list only direct collaborators.]
-*   **Manager Agent:** [ID, if different from outgoing]
-*   **Implementation Agent Alpha:**
-    *   **Current Task(s):** [Task ID/Reference]
-    *   **Status:** [e.g., Actively working, Awaiting review, Idle]
-*   *(Add/remove agents as applicable for the project)*
+[通常用于经理交接。对于专业代理，此部分可能会被省略或仅列出直接合作者。]
+*   **经理代理：** [ID，如果与即将离任的不同]
+*   **实施代理 Alpha：**
+    *   **当前任务：** [任务 ID/参考]
+    *   **状态：** [例如，正在积极工作，等待审查，空闲]
+*   *（根据项目情况添加/删除代理）*
 
-## Section 6: Recent Memory Bank Entries (Contextual Snippets - Highly Relevant Scope)
+## 第 6 节：最近的内存库条目（上下文片段 - 高度相关的范围）
 
-[Include verbatim copies or concise summaries of the *most relevant* recent entries from the specified Memory Bank(s) that the new agent needs for immediate context. Focus on entries directly related to the ongoing/upcoming tasks within the handover scope. Prioritize recency and direct applicability.]
+[包括新代理需要立即了解的指定内存库中*最相关*的最近条目的逐字副本或简明摘要。重点关注与交接范围内正在进行/即将到来的任务直接相关的条目。优先考虑新近性和直接适用性。]
 
 ---
-[Copy of Memory Bank Entry 1 directly related to current task]
+[与当前任务直接相关的内存库条目 1 的副本]
 ---
-[Copy of Memory Bank Entry 2 directly related to current task]
+[与当前任务直接相关的内存库条目 2 的副本]
 ---
 [...]
 ---
 
-## Section 7: Recent Conversational Context & Key User Directives
+## 第 7 节：最近的对话上下文和关键用户指令
 
-**Purpose:** This section captures critical insights, directives, or contextual shifts from the most recent (e.g., last 5-10, or as specified by the Handover Protocol) interactions with the User that might not yet be fully reflected in formal logs or the Implementation Plan. It provides the "freshest layer of user intent" for the incoming agent.
+**目的：** 本节捕获了来自与用户最近（例如，最后 5-10 次，或由交接协议指定）互动中的关键见解、指令或上下文转变，这些可能尚未完全反映在正式日志或实施计划中。它为即将上任的代理提供了"用户意图的最新层次"。
 
-**Content:**
-*   **Source:** Summary generated by the Outgoing Agent based on a review of recent conversational history immediately prior to handover.
-*   **Format:** Bullet points preferred, focusing on actionable information or critical context.
+**内容：**
+*   **来源：** 即将离任的代理在交接前立即审查最近的对话历史后生成的摘要。
+*   **格式：** 首选项目符号，重点关注可操作的信息或关键上下文。
 
-**[Placeholder for Outgoing Agent to insert summary of recent conversational context and key user directives]**
+**[占位符，供即将离任的代理插入最近对话上下文和关键用户指令的摘要]**
 
-*Example:*
-*   *User expressed a new preference for using Model X as the primary choice for final submission (ref: conversation on YYYY-MM-DD, turn N). This overrides previous discussions on Model Y.*
-*   *Clarified that the deadline for current phase is now DD-MM-YYYY (ref: User message, YYYY-MM-DD, turn M).*
+*示例：*
+*   *用户表达了使用模型 X 作为最终提交的首选的新偏好（参考：YYYY-MM-DD 的对话，第 N 轮）。这覆盖了之前关于模型 Y 的讨论。*
+*   *澄清当前阶段的截止日期现在是 DD-MM-YYYY（参考：用户消息，YYYY-MM-DD，第 M 轮）。*
 
-## Section 8: Critical Code Snippets / Configuration / Outputs (Relevant Scope)
+## 第 8 节：关键代码片段/配置/输出（相关范围）
 
-[Embed crucial code snippets, configuration file contents, API responses, error messages, or other outputs *directly related* to the task(s) being handed over or frequently referenced. Use appropriate Markdown code blocks. Ensure this is highly targeted to avoid clutter.]
+[嵌入与正在交接或经常引用的任务*直接相关*的关键代码片段、配置文件内容、API 响应、错误消息或其他输出。使用适当的 Markdown 代码块。确保此内容高度针对性，以避免混乱。]
 
-```start of python cell
-# Example: Relevant function being debugged or key configuration
+```python
+# 示例：正在调试的相关函数或关键配置
 def specific_function_under_review(input_data):
-    # ... code directly relevant to handover ...
-```end of python cell
+    # ... 与交接直接相关的代码 ...
+```
 
-## Section 9: Current Obstacles, Challenges & Risks (Relevant Scope)
+## 第 9 节：当前的障碍、挑战和风险（相关范围）
 
-[List any known blockers, unresolved issues, errors, technical challenges, or potential risks *specifically relevant* to the task or area being handed over. Be specific.]
-*   **Blocker:** [Task ID/Description] - [Description of blocker] - **Status:** [e.g., Investigating, Waiting for User input, Pending external dependency]
-*   **Error Encountered:** [Description of error] - **Details:** [Relevant log snippet, observation, or steps to reproduce if known]
-*   **Potential Risk:** [Description of risk and potential impact]
+[列出与正在交接的任务或领域*具体相关*的任何已知障碍、未解决的问题、错误、技术挑战或潜在风险。请具体说明。]
+*   **障碍：** [任务 ID/描述] - [障碍描述] - **状态：** [例如，正在调查，等待用户输入，等待外部依赖项]
+*   **遇到的错误：** [错误描述] - **详细信息：** [相关的日志片段、观察或重现步骤（如果已知）]
+*   **潜在风险：** [风险描述和潜在影响]
 
-## Section 10: Outstanding User/Manager Directives or Questions (Relevant Scope)
+## 第 10 节：未解决的用户/经理指令或问题（相关范围）
 
-[List any recent instructions *relevant to this agent/task* from the User or Manager that are still pending action, or questions awaiting answers. Distinguish from general conversational context in Section 7 by focusing on explicit, unresolved items.]
-*   [Directive/Question 1: e.g., "User asked to investigate alternative library Z for Task X. Investigation pending."]
-*   [Directive/Question 2: e.g., "Manager requested a performance benchmark for function Y. Not yet started."]
+[列出用户或经理最近的*与此代理/任务相关*的任何仍在等待处理的指令，或等待答案的问题。通过关注明确的、未解决的项目，与第 7 节中的一般对话上下文区分开来。]
+*   [指令/问题 1：例如，"用户要求调查任务 X 的备用库 Z。调查待定。"]
+*   [指令/问题 2：例如，"经理要求对函数 Y 进行性能基准测试。尚未开始。"]
 
-## Section 11: Key Project File Manifest (Relevant Scope - Optional but Recommended)
+## 第 11 节：关键项目文件清单（相关范围 - 可选但推荐）
 
-[List key files the incoming agent will likely need to interact with for their immediate task(s). Provide brief context on relevance.]
-*   `src/core_module/file_x.py`: [Contains the primary logic for feature Y, currently under development.]
-*   `tests/unit/test_file_x.py`: [Unit tests for feature Y; some may be failing.]
-*   `config/settings.json`: [Relevant configuration for the current task.]
+[列出即将上任的代理可能需要为其近期任务与之交互的关键文件。提供有关相关性的简要上下文。]
+*   `src/core_module/file_x.py`: [包含功能 Y 的主要逻辑，目前正在开发中。]
+*   `tests/unit/test_file_x.py`: [功能 Y 的单元测试；有些可能会失败。]
+*   `config/settings.json`: [当前任务的相关配置。]
 *   ...
 
 ```
 
-## 3. `Handover_Prompt.md` Format (New Agent Initialization)
+## 3. `Handover_Prompt.md` 格式（新代理初始化）
 
-This prompt initializes the new agent instance, regardless of type. It blends standard APM context (if needed) with handover-specific instructions.
+此提示初始化新代理实例，无论类型如何。它将标准的 APM 上下文（如果需要）与特定于交接的指令相结合。
 
-```start of markdown cell
-# APM Agent Initialization - Handover Protocol
+```markdown
+# APM 代理初始化 - 交接协议
 
-You are being activated as an agent ([Agent Type, e.g., Manager Agent, Implementation Agent]) within the **Agentic Project Management (APM)** framework.
+您正在作为**代理项目管理 (APM)** 框架内的代理（[代理类型，例如，经理代理、实施代理]）被激活。
 
-**CRITICAL: This is a HANDOVER situation.** You are taking over from a previous agent instance ([Outgoing Agent ID]). Your primary goal is to seamlessly integrate and continue the assigned work based on the provided context.
+**关键：这是一个交接情况。** 您正在从以前的代理实例（[即将离任的代理 ID]）接手。您的主要目标是根据提供的上下文无缝集成并继续分配的工作。
 
-## 1. APM Framework Context (As Needed for Role)
+## 1. APM 框架上下文（根据角色需要）
 
-**(For Manager Agents, the preparer should integrate essential Sections 1 and 2 from `prompts/00_Initial_Manager_Setup/01_Initiation_Prompt.md` here, adapting "Your Role" / "Core Responsibilities" to reflect the takeover.)**
-**(For Implementation/Specialized Agents, this section may be omitted or heavily condensed by the preparer, focusing only on essential concepts like the Memory Bank if the agent is already familiar with APM basics.)**
+**（对于经理代理，准备者应在此处整合来自 `prompts/00_Initial_Manager_Setup/01_Initiation_Prompt.md` 的基本第 1 和第 2 节，调整"您的角色"/"核心职责"以反映接管。）**
+**（对于实施/专业代理，如果代理已经熟悉 APM 基础知识，准备者可以省略或大量压缩此部分，仅关注内存库等基本概念。）**
 
-*   **Your Role:** [Briefly state the role and the fact you are taking over, e.g., "As the incoming Manager Agent, you are responsible for overseeing the project's progression...", "As Implementation Agent B, you are taking over Task X..."]
-*   **Memory Bank:** You MUST log significant actions/results to the Memory Bank(s) located at [Path(s) from Handover File, Section 1] using the format defined in `prompts/02_Utility_Prompts_And_Format_Definitions/Memory_Bank_Log_Format.md`. Logging occurs after User confirmation of task state.
-*   **User:** The primary stakeholder and your main point of communication.
+*   **您的角色：** [简要说明角色以及您正在接手的事实，例如，"作为即将上任的经理代理，您负责监督项目的进展......"，"作为实施代理 B，您正在接手任务 X ......" ]
+*   **内存库：** 您必须使用 `prompts/02_Utility_Prompts_And_Format_Definitions/Memory_Bank_Log_Format.md` 中定义的格式，将重要的操作/结果记录到位于 [交接文件第 1 节中的路径] 的内存库中。日志记录在用户确认任务状态后进行。
+*   **用户：** 主要利益相关者和您的主要沟通点。
 
-## 2. Handover Context Assimilation
+## 2. 交接上下文吸收
 
-A detailed **`Handover_File.md`** has been prepared containing the necessary context for your role/task.
+已准备好一份详细的 **`Handover_File.md`**，其中包含您的角色/任务所需的上下文。
 
-*   **File Location:** [Relative path to the generated `Handover_File.md`]
-*   **File Contents Overview:** This file contains the current state of your assigned task(s) or project scope, including: Implementation Plan status, relevant decisions, recent activity logs from the Memory Bank, critical code/outputs, known obstacles, and recent User directives.
+*   **文件位置：** [到生成的 `Handover_File.md` 的相对路径]
+*   **文件内容概述：** 此文件包含您分配的任务或项目范围的当前状态，包括：实施计划状态、相关决策、内存库中的近期活动日志、关键代码/输出、已知障碍和近期用户指令。
 
-**YOUR IMMEDIATE TASK:**
+**您的近期任务：**
 
-1.  **Thoroughly Read and Internalize:** Carefully read the *entire* `Handover_File.md`. Pay extremely close attention to sections most relevant to your immediate responsibilities, such as:
-    *   `Section 3: Implementation Plan Status` (for your assigned tasks)
-    *   `Section 6: Recent Memory Bank Entries`
-    *   `Section 7: Recent Conversational Context & Key User Directives`
-    *   `Section 8: Critical Code Snippets / Configuration / Outputs`
-    *   `Section 9: Current Obstacles, Challenges & Risks`
-    *   `Section 10: Outstanding User/Manager Directives or Questions`
-2.  **Identify Next Steps:** Based *only* on the information within the `Handover_File.md`, determine the most immediate priorities and the next 1-2 actions required for your role/task.
-3.  **Confirm Understanding to User:** Signal your readiness to the User by:
-    *   Briefly summarizing the current status *of your specific task(s) or overall project scope*, based on your understanding of the `Handover_File.md`.
-    *   Listing the 1-2 most immediate, concrete actions you will take.
-    *   Asking any critical clarifying questions you have that are essential *before* you can proceed with those actions. Focus on questions that, if unanswered, would prevent you from starting.
+1.  **彻底阅读和内化：** 仔细阅读*整个* `Handover_File.md`。特别注意与您的直接职责最相关的部分，例如：
+    *   `第 3 节：实施计划状态`（针对您分配的任务）
+    *   `第 6 节：最近的内存库条目`
+    *   `第 7 节：最近的对话上下文和关键用户指令`
+    *   `第 8 节：关键代码片段/配置/输出`
+    *   `第 9 节：当前的障碍、挑战和风险`
+    *   `第 10 节：未解决的用户/经理指令或问题`
+2.  **确定后续步骤：** *仅*根据 `Handover_File.md` 中的信息，确定最紧迫的优先事项和您的角色/任务所需的下 1-2 个操作。
+3.  **向用户确认理解：** 通过以下方式向用户表明您已准备就绪：
+    *   根据您对 `Handover_File.md` 的理解，简要总结*您的特定任务或整个项目范围*的当前状态。
+    *   列出您将采取的 1-2 个最直接、具体的操作。
+    *   提出您在继续这些操作*之前*必须提出的任何关键澄清问题。重点关注那些如果不回答就会妨碍您开始的问题。
 
-Do not begin any operational work until you have completed this assimilation and verification step with the User and received their go-ahead.
+在您与用户完成此吸收和验证步骤并获得他们的同意之前，不要开始任何操作性工作。
 
-## 3. Initial Operational Objective
+## 3. 初始操作目标
 
-Once your understanding is confirmed by the User, your first operational objective will typically be:
+一旦用户确认您的理解，您的第一个操作目标通常是：
 
-*   **[The preparer of this prompt should state the explicit first task derived from the Handover File, e.g., "Address the primary blocker identified in Section 9 of the Handover_File.md for Task X", "Resume implementation of feature Y as detailed in Section 3 and Section 8 of the Handover_File.md", "Prepare the task assignment prompt for the next sub-task identified in Section 3", "Action the outstanding User directive noted in Section 10"]**
+*   **[此提示的准备者应说明从交接文件中得出的明确的第一个任务，例如，"解决交接文件第 9 节中为任务 X 确定的主要障碍"，"恢复交接文件第 3 节和第 8 节中详述的功能 Y 的实施"，"为第 3 节中确定的下一个子任务准备任务分配提示"，"执行第 10 节中指出的未解决的用户指令"]**
 
-Proceed with the Handover Context Assimilation now. Acknowledge receipt of this prompt and confirm you are beginning the review of the `Handover_File.md`.
+现在开始交接上下文吸收。确认收到此提示并确认您正在开始审查 `Handover_File.md`。
 ```
 
-## 4. Notes on Variations for Specialized Agent Handovers
+## 4. 关于专业代理交接变体的说明
 
-As indicated in the templates above, handovers for Specialized Agents (e.g., Implementer, Debugger, Tester) typically involve **scope-limited versions** of these formats:
+如上文模板所示，专业代理（例如，实施者、调试器、测试者）的交接通常涉及这些格式的**范围受限版本**：
 
-*   **`Handover_File.md` (Simplified & Focused):** The preparer (Manager Agent or User) must ensure the content is highly focused on the *specific task(s)* being handed over. Sections like overall project goals, full agent roster, or extensive historical decision logs (if not directly relevant to the specific task) may be omitted or properely summarized. The goal is to provide all necessary context for *the next tasks* without overwhelming the next Agent with past info not particularly useful for the next task or the rest of the project.
-*   **`Handover_Prompt.md` (Simplified):** Contains the general APM framework introduction (Section 1) or a dense summary if the Agent has been activated before. Instructions in Section 2 and 3 should focus directly on understanding the *task-specific* context from the tailored Handover File and resuming that specific work.
+*   **`Handover_File.md`（简化和专注）：** 准备者（经理代理或用户）必须确保内容高度集中于正在交接的*特定任务*。如果与特定任务不直接相关，可以省略或适当总结诸如总体项目目标、完整代理名册或大量历史决策日志等部分。目标是为*下一个任务*提供所有必要的上下文，而不用对下一个代理无用的过去信息或项目其余部分的信息来压倒它。
+*   **`Handover_Prompt.md`（简化）：** 包含通用的 APM 框架介绍（第 1 节）或如果代理之前已被激活，则提供一个精简的摘要。第 2 节和第 3 节中的说明应直接侧重于从量身定制的交接文件中理解*特定于任务*的上下文，并恢复该特定工作。
 
-The key is that the Manager Agent or User preparing the handover artifacts must tailor the content of both `Handover_File.md` and `Handover_Prompt.md` to the precise needs, role, and scope of the incoming specialized agent.
+关键是准备交接产物的经理代理或用户必须根据即将上任的专业代理的精确需求、角色和范围来定制 `Handover_File.md` 和 `Handover_Prompt.md` 的内容。
 
-## 5. General Formatting Notes
+## 5. 一般格式说明
 
-*   **Clarity and Conciseness:** Prioritize clear, unambiguous language. While comprehensive for Manager Handovers, always focus information on what the incoming agent *needs* to proceed effectively within its designated scope.
-*   **Recency and Relevance:** Emphasize the most recent and directly relevant information, especially for Memory Bank entries, conversational context, and outputs.
-*   **Markdown Usage:** Use standard Markdown consistently for headings, lists, code blocks, etc., to ensure readability by both humans and AI agents.
-*   **Placeholders:** Replace all bracketed placeholders `[like this]` with the actual project-specific information.
-*   **Verification Step:** The User confirmation step outlined in the `Handover_Prompt.md` (Section 2, item 3) is crucial; ensure the instructions for the incoming agent are explicit about summarizing status, next actions, and asking critical questions.
+*   **清晰和简洁：** 优先使用清晰、明确的语言。虽然对经理交接来说是全面的，但始终将信息集中在即将上任的代理在其指定范围内有效进行*所需*的内容上。
+*   **新近性和相关性：** 强调最新和最直接相关的信息，特别是对于内存库条目、对话上下文和输出。
+*   **Markdown 使用：** 一致地使用标准的 Markdown 来表示标题、列表、代码块等，以确保人类和 AI 代理的可读性。
+*   **占位符：** 用实际的项目特定信息替换所有方括号占位符 `[如此]`。
+*   **验证步骤：** `Handover_Prompt.md`（第 2 节，第 3 项）中概述的用户确认步骤至关重要；确保对即将上任的代理的说明明确要求总结状态、下一步行动和提出关键问题。

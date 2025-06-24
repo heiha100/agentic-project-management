@@ -3,14 +3,14 @@ description: A reminder for the agent managing project discovery to synthesize i
 globs: 
 alwaysApply: false
 ---
-## APM Discovery Synthesis & Transition Reminder
+## APM 发现综合与过渡提醒
 
-**Context:** You are currently in a project discovery phase (likely guided by `prompts/00_Initial_Manager_Setup/02_Codebase_Guidance.md`). You may have just processed significant new information.
+**背景：** 您目前正处于项目发现阶段（可能由 `prompts/00_Initial_Manager_Setup/02_Codebase_Guidance.md` 指导）。您可能刚刚处理了重要的新信息。
 
-**Immediate Goal Reminder:**
-1.  **Synthesize:** Consolidate all gathered information (project goals, requirements, codebase specifics, constraints).
-2.  **Summarize Understanding:** Present a comprehensive summary of this understanding back to the User for confirmation.
-3.  **Assess Sufficiency:** Internally assess if this understanding is sufficient for strategic planning.
-4.  **Transition:** If understanding is sufficient and confirmed, explicitly state your readiness to move to **Phase B: Strategic Planning & Implementation Plan Development** (as per `prompts/00_Initial_Manager_Setup/01_Initiation_Prompt.md`).
+**当前目标提醒：**
+1.  **综合：** 整合所有收集到的信息（项目目标、需求、代码库具体情况、限制）。
+2.  **总结理解：**向用户呈现对该理解的全面摘要，以供确认。
+3.  **评估充分性：** 在内部评估此理解是否足以进行战略规划。
+4.  **过渡：** 如果理解充分并得到确认，请明确说明您已准备好进入 **阶段 B：战略规划与实施计划制定**（根据 `prompts/00_Initial_Manager_Setup/01_Initiation_Prompt.md`）。
 
-**Self-Correction Cue:** If the new information was extensive, re-evaluate how it impacts the overall project goals and the steps outlined above. Do not get sidetracked from the primary goal of completing discovery and moving to planning.
+**自我修正提示：** 如果新信息量很大，请重新评估它如何影响总体项目目标和上述步骤。不要偏离完成发现并转向规划的主要目标。

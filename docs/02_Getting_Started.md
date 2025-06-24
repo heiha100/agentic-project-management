@@ -1,125 +1,125 @@
-# Getting Started with APM
+# APM 入门指南
 
-This guide provides a step-by-step walkthrough for setting up and running your first project using the Agentic Project Management (APM) framework. It assumes you have a basic understanding of the APM concepts from the `00_Introduction.md` and `01_Workflow_Overview.md`.
+本指南提供了使用代理项目管理 (APM) 框架设置和运行您的第一个项目的分步演练。它假定您已经从 `00_Introduction.md` 和 `01_Workflow_Overview.md` 中对 APM 概念有了基本的了解。
 
-## Prerequisites
+## 先决条件
 
-*   **AI Assistant Platform:** Access to an LLM-based AI assistant where you can maintain distinct, ongoing chat sessions (e.g., Cursor IDE, Claude, ChatGPT Plus with GPTs, etc.). APM relies on managing multiple agent sessions.
-*   **Project Idea:** A task or project complex enough to benefit from a structured, multi-agent approach. 
-*   **Markdown Familiarity:** Basic understanding of Markdown syntax for interacting with prompts and logs.
-*   **APM Files:** Access to the APM assets (prompts, guides, and protocol definitions), particularly the `/prompts` directory. The complete APM library is available [here](https://github.com/sdi2200262/agentic-project-management).
+*   **AI 助手平台：** 可以访问基于 LLM 的 AI 助手，您可以在其中维护不同、持续的聊天会话（例如，Cursor IDE、Claude、带有 GPTs 的 ChatGPT Plus 等）。APM 依赖于管理多个代理会话。
+*   **项目构想：** 一个足够复杂的任务或项目，可以从结构化的多代理方法中受益。
+*   **Markdown 熟悉度：** 对用于与提示和日志交互的 Markdown 语法有基本的了解。
+*   **APM 文件：** 可以访问 APM 资产（提示、指南和协议定义），特别是 `/prompts` 目录。完整的 APM 库可在此处获取 [链接](https://github.com/sdi2200262/agentic-project-management)。
 
-## 1. Understand the APM Framework
+## 1. 了解 APM 框架
 
-Before diving in, familiarize yourself with the core concepts of APM:
+在开始之前，请先熟悉 APM 的核心概念：
 
-*   **Roles:** Manager Agent, Implementation Agent(s), User.
-*   **Key Artifacts:** `Implementation_Plan.md`, `Memory_Bank.md` (or `Memory/` directory for the Memory Bank System), `Handover_File.md` and the Handover Prompt.
-*   **Core Workflow:** Review the [Workflow Overview](01_Workflow_Overview.md) and the main `README.md`.
-*   **Prompt Library:** Understand that the `prompts/` directory contains the core instructions for agents.
-*   **(Optional) Cursor Rules:** The `rules/` directory (mirrored as `.cursor/rules/` in your project) contains optional rules for users of the Cursor IDE to enhance agent reliability and workflow efficiency. See the `rules/README.md` and the [Cursor Integration Guide](04_Cursor_Integration_Guide.md) for details.
+*   **角色：** 经理代理、实施代理、用户。
+*   **关键产物：** `Implementation_Plan.md`、`Memory_Bank.md`（或内存库系统的 `Memory/` 目录）、`Handover_File.md` 和交接提示。
+*   **核心工作流程：** 查看 [工作流程概述](01_Workflow_Overview.md) 和主 `README.md`。
+*   **提示库：** 了解 `prompts/` 目录包含代理的核心指令。
+*   **（可选）Cursor 规则：** `rules/` 目录（在您的项目中镜像为 `.cursor/rules/`）包含供 Cursor IDE 用户使用的可选规则，以增强代理可靠性和工作流程效率。有关详细信息，请参阅 `rules/README.md` 和 [Cursor 集成指南](04_Cursor_Integration_Guide.md)。
 
-## 2. Setting Up Your Project: Accessing APM Assets
+## 2. 设置您的项目：访问 APM 资产
 
-You have a few options to get the APM prompts, guides, and protocol definitions:
+您有几个选项来获取 APM 提示、指南和协议定义：
 
-1.  **Use the APM Template (Recommended for Custom Projects):**
-    *   Click the "Use this template" button on the [APM GitHub Repository](https://github.com/sdi2200262/agentic-project-management).
-    *   This creates *your own repository* pre-filled with the entire APM structure.
-    *   **Ideal Setup:** Clone *your new repository* to the root of your project workspace. This ensures the Manager Agent can easily reference all APM guides if you confirm full asset availability.
-2.  **Clone the Official APM Repository (Recommended for Direct Use & Updates):**
-    *   Clone the main [APM GitHub Repository](https://github.com/sdi2200262/agentic-project-management) directly into your project workspace, ideally at the root.
-    *   This gives you direct access to the latest version and all assets.
-3.  **Manual Copy-Pasting (Basic Usage):**
-    *   You can copy-paste the content of prompts (like `01_Initiation_Prompt.md`) directly from the official APM GitHub repository into your AI assistant as needed.
-    *   This requires more manual effort from you to provide guide contents when the Manager Agent requests them.
+1.  **使用 APM 模板（推荐用于自定义项目）：**
+    *   在 [APM GitHub 仓库](https://github.com/sdi2200262/agentic-project-management) 上单击"使用此模板"按钮。
+    *   这将创建*您自己的仓库*，其中预先填充了整个 APM 结构。
+    *   **理想设置：** 将*您的新仓库*克隆到项目工作区的根目录。如果您确认完整的资产可用性，这可以确保经理代理可以轻松引用所有 APM 指南。
+2.  **克隆官方 APM 仓库（推荐用于直接使用和更新）：**
+    *   将主 [APM GitHub 仓库](https://github.com/sdi2200262/agentic-project-management) 直接克隆到您的项目工作区，最好是在根目录。
+    *   这使您可以直接访问最新版本和所有资产。
+3.  **手动复制粘贴（基本用法）：**
+    *   您可以根据需要将提示的内容（如 `01_Initiation_Prompt.md`）直接从官方 APM GitHub 仓库复制粘贴到您的 AI 助手中。
+    *   当经理代理请求指南内容时，这需要您进行更多的手动工作。
 
-**Important:** For the Manager Agent to operate with full file awareness (if your AI platform supports it), the APM assets (especially the `prompts/` directory) should ideally be located at the root of your project workspace.
+**重要提示：** 为了让经理代理在具有完整文件感知能力的情况下运行（如果您的 AI 平台支持），APM 资产（尤其是 `prompts/` 目录）最好位于您的项目工作区的根目录。
 
-## 3. Initiating APM within your Project
+## 3. 在您的项目中启动 APM
 
-This is the first crucial step to get APM running:
+这是让 APM 运行的第一个关键步骤：
 
-1.  **Open your AI Assistant (e.g., Cursor).** Dedicate a new, clean chat tab or session for your Manager Agent.
-2.  **Provide the Initiation Prompt:**
-    *   Navigate to `prompts/00_Initial_Manager_Setup/01_Initiation_Prompt.md` (in your chosen APM asset location).
-    *   Copy its *entire content*.
-    *   Paste this into the chat with your designated Manager Agent as the very first message.
-3.  **Follow the Lead:** Your new Manager Agent (MA), guided by this prompt, will then:
-    *   Verify APM asset availability with you (you'll confirm your setup: full clone, partial, or copy-pasting).
-    *   Ask for a high-level project overview.
-    *   Present options for detailed project discovery (User-Directed or MA-Guided via `02_Codebase_Guidance.md`).
-    *   Engage in the chosen discovery process.
+1.  **打开您的 AI 助手（例如，Cursor）。** 为您的经理代理专门分配一个新的、干净的聊天选项卡或会话。
+2.  **提供启动提示：**
+    *   导航到 `prompts/00_Initial_Manager_Setup/01_Initiation_Prompt.md`（在您选择的 APM 资产位置）。
+    *   复制其*全部内容*。
+    *   将其作为第一条消息粘贴到与您指定的经理代理的聊天中。
+3.  **跟随引导：** 您的新经理代理 (MA) 在此提示的指导下，将：
+    *   与您一起验证 APM 资产的可用性（您将确认您的设置：完整克隆、部分克隆或复制粘贴）。
+    *   要求提供高级项目概述。
+    *   提供详细项目发现的选项（用户指导或通过 `02_Codebase_Guidance.md` 的 MA 指导）。
+    *   参与所选的发现过程。
 
-## 4. Developing the Implementation Plan & Memory Bank System
+## 4. 制定实施计划和内存库系统
 
-This phase is driven by the Manager Agent after it has gathered sufficient context:
+此阶段由经理代理在收集到足够上下文后驱动：
 
-1.  **Autonomous Planning Trigger:** The MA will *autonomously determine* when it has a comprehensive understanding to proceed with planning. 
-2.  **Consolidated Proposal & Creation:** In a single, comprehensive message, the MA will:
-    *   Present a **high-level summary** of its proposed `Implementation_Plan.md`.
-    *   Propose a **Memory Bank System structure** (e.g., a single `Memory_Bank.md` file or a `Memory/` directory with multiple files), with justification (guided by `prompts/01_Manager_Agent_Core_Guides/02_Memory_Bank_Guide.md`).
-    *   **Proceed to create the `Implementation_Plan.md` file** in your project workspace, using `prompts/01_Manager_Agent_Core_Guides/01_Implementation_Plan_Guide.md`.
-    *   **Proceed to create the initial Memory Bank file(s) and structure** (e.g., `Memory_Bank.md` or the `Memory/` directory with its `README.md` and initial log files), using the system design principles and header formats detailed in `prompts/01_Manager_Agent_Core_Guides/02_Memory_Bank_Guide.md`.
-3.  **User Review and Refinement:**
-    *   The MA will invite you to **review the content of the newly created files**.
-    *   Discuss any necessary modifications with the MA, who will update the files.
-4.  **Final Confirmation:** Confirm with the MA when you are satisfied with the `Implementation_Plan.md` and Memory Bank System setup.
+1.  **自主规划触发器：** MA 将*自主确定*何时对继续规划有全面的了解。
+2.  **综合提案和创建：** 在一条综合消息中，MA 将：
+    *   提出其建议的 `Implementation_Plan.md` 的**高级摘要**。
+    *   提出**内存库系统结构**（例如，单个 `Memory_Bank.md` 文件或带有多个文件的 `Memory/` 目录），并提供理由（由 `prompts/01_Manager_Agent_Core_Guides/02_Memory_Bank_Guide.md` 指导）。
+    *   **继续在您的项目工作区中创建 `Implementation_Plan.md` 文件**，使用 `prompts/01_Manager_Agent_Core_Guides/01_Implementation_Plan_Guide.md`。
+    *   **继续创建初始内存库文件和结构**（例如，`Memory_Bank.md` 或 `Memory/` 目录及其 `README.md` 和初始日志文件），使用 `prompts/01_Manager_Agent_Core_Guides/02_Memory_Bank_Guide.md` 中详述的系统设计原则和标题格式。
+3.  **用户审查和完善：**
+    *   MA 将邀请您**审查新创建文件的内容**。
+    *   与 MA 讨论任何必要的修改，MA 将更新文件。
+4.  **最终确认：** 当您对 `Implementation_Plan.md` 和内存库系统设置满意时，向 MA 确认。
 
-## Step 5: Running the Task Cycle (The Core Loop)
+## 第 5 步：运行任务周期（核心循环）
 
-This is the iterative process of getting work done.
+这是完成工作的迭代过程。
 
-1.  **Prepare Task Assignment Prompt:**
-    *   Identify the first task (e.g., "Phase 1 / Task A / Item 1") in your `Implementation_Plan.md`. Note the assigned agent (e.g., "Agent A").
-    *   In the **Manager Agent's chat**, ask it to help you prepare the Task Assignment Prompt for this specific task and agent. You can say: "Give me the task assignment prompt for Agent A to complete Phase 1 / Task A / Item 1, following the task assignment guide."
-    *   The Manager (referencing `prompts/01_Manager_Agent_Core_Guides/03_Task_Assignment_Prompts_Guide.md`) will provide you with a draft prompt. Review and refine it with the Manager if needed.
-2.  **Initiate Implementation Agent:**
-    *   Open a **new, separate chat session**. This will be your "Agent A". Name it clearly.
-    *   **Copy the *entire* content** of `prompts/02_Utility_Prompts_And_Format_Definitions/Implementation_Agent_Onboarding.md`.
-    *   Paste it as the **first message** to Agent A.
-    *   Agent A should acknowledge understanding and state readiness for its first task.
-3.  **Deliver Task Prompt:**
-    *   Copy the Task Assignment Prompt that the Manager gave you.
-    *   Paste it into **Agent A's chat session**.
-4.  **Execute & Report:**
-    *   Agent A will now execute the task. It may ask you (the User) clarifying questions. Answer them to the best of your ability.
-    *   Once Agent A finishes, makes significant progress, or encounters a blocker, it will report its status and output back to **you** in its chat session.
-5.  **Confirm & Instruct Logging:**
-    *   Review Agent A's report.
-    *   **Decide** if the work should be logged (usually yes for completion or significant progress/blockers).
-    *   Instruct Agent A clearly, e.g., "Okay, thank you. Please log this work to `Memory_Bank.md` using the standard format." (Agent A already knows the format from its onboarding/task prompt references to `Memory_Bank_Log_Format.md`).
-6.  **Inform Manager & Review:**
-    *   Go back to the **Manager Agent's chat session**.
-    *   Inform the Manager: "Agent A has completed Task [Reference] and logged the results to `Memory_Bank.md`."
-    *   The Manager Agent (following `prompts/01_Manager_Agent_Core_Guides/04_Review_And_Feedback_Guide.md`) will then proceed with its review process. It may ask you for the specific log entry content if it cannot access files directly.
-    *   The Manager will provide its assessment (task successful, or issues found with corrective steps) back to you.
-7.  **Repeat:** Based on the Manager's review feedback:
-    *   If successful, the Manager will proceed to prepare the prompt for the *next* task in the `Implementation_Plan.md`.
-    *   If issues require correction, the Manager will prepare a revised Follow-up Task Assignment Prompt for Agent A (or potentially assign a different agent like a Debugger). You will revise the cycle with said prompt until completion.
+1.  **准备任务分配提示：**
+    *   在您的 `Implementation_Plan.md` 中确定第一个任务（例如，"阶段 1 / 任务 A / 项目 1"）。注意分配的代理（例如，"代理 A"）。
+    *   在**经理代理的聊天**中，要求它帮助您准备此特定任务和代理的任务分配提示。您可以说："请按照任务分配指南，给我代理 A 完成阶段 1 / 任务 A / 项目 1 的任务分配提示。"
+    *   经理（参考 `prompts/01_Manager_Agent_Core_Guides/03_Task_Assignment_Prompts_Guide.md`）将为您提供一个草稿提示。如果需要，与经理一起审查和完善它。
+2.  **启动实施代理：**
+    *   打开一个**新的、独立的聊天会话**。这将是您的"代理 A"。给它起一个清晰的名字。
+    *   **复制 `prompts/02_Utility_Prompts_And_Format_Definitions/Implementation_Agent_Onboarding.md` 的*全部*内容**。
+    *   将其作为**第一条消息**粘贴给代理 A。
+    *   代理 A 应确认理解并表示已准备好执行其第一个任务。
+3.  **交付任务提示：**
+    *   复制经理给您的任务分配提示。
+    *   将其粘贴到**代理 A 的聊天会话**中。
+4.  **执行和报告：**
+    *   代理 A 现在将执行任务。它可能会问您（用户）一些澄清问题。尽力回答它们。
+    *   一旦代理 A 完成、取得重大进展或遇到障碍，它将向**您**在其聊天会话中报告其状态和输出。
+5.  **确认并指示记录：**
+    *   审查代理 A 的报告。
+    *   **决定**是否应记录工作（通常对于完成或重大进展/障碍是肯定的）。
+    *   明确指示代理 A，例如，"好的，谢谢。请使用标准格式将此工作记录到 `Memory_Bank.md`。"（代理 A 从其入职/任务提示对 `Memory_Bank_Log_Format.md` 的引用中已经知道格式）。
+6.  **通知经理并审查：**
+    *   返回**经理代理的聊天会话**。
+    *   通知经理："代理 A 已完成任务 [参考] 并将结果记录到 `Memory_Bank.md`。"
+    *   经理代理（遵循 `prompts/01_Manager_Agent_Core_Guides/04_Review_And_Feedback_Guide.md`）将继续其审查过程。如果它无法直接访问文件，它可能会向您索要具体的日志条目内容。
+    *   经理会将其评估（任务成功，或发现问题并采取纠正步骤）反馈给您。
+7.  **重复：** 根据经理的审查反馈：
+    *   如果成功，经理将继续准备 `Implementation_Plan.md` 中*下一个*任务的提示。
+    *   如果问题需要纠正，经理将为代理 A 准备一个修订的后续任务分配提示（或可能分配一个不同的代理，如调试器）。您将使用该提示重复该周期，直到完成。
 
-## Step 6: Handling Handovers (When Necessary)
+## 第 6 步：处理交接（必要时）
 
-If an agent (especially the Manager) nears its context limit, or you need to swap agents for strategic reasons, use the Handover Protocol.
+如果代理（尤其是经理）接近其上下文限制，或者您出于战略原因需要更换代理，请使用交接协议。
 
-1.  **Identify Need:** The Manager may warn you, or you might observe degraded performance.
-2.  **Instruct Manager:** In the **current Manager Agent's chat**, instruct it to initiate the Handover Protocol as detailed in `prompts/01_Manager_Agent_Core_Guides/05_Handover_Protocol_Guide.md`.
-3.  **Prepare Artifacts:** The Manager will guide you (or directly generate, if capable) the content for `Handover_File.md` (context dump) and `Handover_Prompt.md` (initialization prompt), using the formats defined in `prompts/02_Utility_Prompts_And_Format_Definitions/Handover_Artifact_Formats.md`.
-4.  **Review Artifacts:** Carefully review the generated content for accuracy and completeness.
-5.  **Initiate New Agent:**
-    *   Start a **new, separate chat session** for the replacement agent (e.g., "APM Manager v2").
-    *   Paste the prepared `Handover_Prompt.md` content as the **first message**.
-    *   Ensure the `Handover_File.md` content is accessible (e.g., paste it after the prompt, or ensure the new agent can read the file if your platform allows).
-6.  **Verify & Continue:** The new agent will process the handover information and should prompt you to confirm its understanding. Verify its summary, then instruct it to resume the project tasks (e.g., "Okay, please proceed with reviewing the status of Agent A's last task."). The workflow continues from where the previous agent left off.
+1.  **识别需求：** 经理可能会警告您，或者您可能会观察到性能下降。
+2.  **指示经理：** 在**当前经理代理的聊天**中，指示它按照 `prompts/01_Manager_Agent_Core_Guides/05_Handover_Protocol_Guide.md` 中详述的方式启动交接协议。
+3.  **准备产物：** 经理将指导您（或在有能力的情况下直接生成）`Handover_File.md`（上下文转储）和 `Handover_Prompt.md`（初始化提示）的内容，使用 `prompts/02_Utility_Prompts_And_Format_Definitions/Handover_Artifact_Formats.md` 中定义的格式。
+4.  **审查产物：** 仔细审查生成的内容的准确性和完整性。
+5.  **启动新代理：**
+    *   为替换代理（例如，"APM 经理 v2"）启动一个**新的、独立的聊天会话**。
+    *   将准备好的 `Handover_Prompt.md` 内容作为**第一条消息**粘贴。
+    *   确保 `Handover_File.md` 内容可访问（例如，在提示后粘贴它，或者如果您的平台允许，确保新代理可以读取该文件）。
+6.  **验证并继续：** 新代理将处理交接信息，并应提示您确认其理解。验证其摘要，然后指示它继续项目任务（例如，"好的，请继续审查代理 A 上一个任务的状态。"）。工作流程从上一个代理离开的地方继续。
 
-## Conclusion
+## 结论
 
-This guide covers the fundamental steps to get started with APM. Remember to:
+本指南涵盖了开始使用 APM 的基本步骤。请记住：
 
-*   Use separate chat sessions for each agent instance.
-*   Be the communication bridge between agents.
-*   Leverage the Manager Agent for planning, prompt crafting, and review.
-*   Ensure Implementation Agents log their work consistently after your confirmation.
-*   Refer back to the specific prompts, guides, and format definitions in the `/prompts` directory and the detailed explanations in the `/docs` directory whenever needed.
+*   为每个代理实例使用单独的聊天会话。
+*   成为代理之间的沟通桥梁。
+*   利用经理代理进行规划、提示制作和审查。
+*   在您确认后，确保实施代理一致地记录其工作。
+*   需要时，请随时参考 `/prompts` 目录中的特定提示、指南和格式定义，以及 `/docs` 目录中的详细说明。
 
-Happy managing! 
+祝您管理愉快！ 

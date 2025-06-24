@@ -1,32 +1,32 @@
 ---
-name: Bug Report
-about: Create a report to help us improve
+name: 错误报告
+about: 创建一个报告来帮助我们改进
 title: ''
 labels: bug
 assignees: ''
 
 ---
 
-**Describe the bug**
-A clear and concise description of what the bug is.
+**描述错误**
+清晰简洁地描述错误是什么。
 
-**To Reproduce**
-Steps to reproduce the behavior:
-1. Go to '...'
-2. Click on '....'
-3. Scroll down to '....'
-4. See error
+**如何复现**
+复现行为的步骤：
+1. 前往 '...'
+2. 点击 '....'
+3. 向下滚动到 '....'
+4. 查看错误
 
-**Expected behavior**
-A clear and concise description of what you expected to happen.
+**预期行为**
+清晰简洁地描述您期望发生的事情。
 
-**Screenshots**
-If applicable, add screenshots to help explain your problem.
+**截图**
+如果适用，请添加截图以帮助解释您的问题。
 
-**Environment (please complete the following information):**
- - OS: [e.g. macOS, Windows, Linux]
- - Browser/Tool Used [e.g. Chrome, Cursor, VSCode]
- - APM Version [e.g. v0.1.0]
+**环境（请填写以下信息）：**
+ - 操作系统：[例如 macOS, Windows, Linux]
+ - 使用的浏览器/工具 [例如 Chrome, Cursor, VSCode]
+ - APM 版本 [例如 v0.1.0]
 
-**Additional context**
-Add any other context about the problem here. 
+**其他上下文**
+在此处添加有关问题的任何其他上下文。 

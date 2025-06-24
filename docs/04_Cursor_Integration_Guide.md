@@ -1,128 +1,125 @@
-# APM Cursor Integration Guide
+# APM Cursor 集成指南
 
-## 1. Introduction
+## 1. 引言
 
-This guide provides specific instructions and best practices for implementing the Agentic Project Management (APM) framework effectively within the Cursor IDE.
+本指南为在 Cursor IDE 中有效实施代理项目管理 (APM) 框架提供了具体的说明和最佳实践。
 
-Cursor's unique features, such as its integrated AI chat, multiple chat tabs, and file context awareness (`@` symbol), make it an exceptionally well-suited environment for managing the multi-agent workflows defined by APM.
+Cursor 的独特功能，例如其集成的 AI 聊天、多个聊天选项卡和文件上下文感知（`@` 符号），使其成为管理 APM 定义的多代理工作流程的绝佳环境。
 
-## 2. Core APM Setup in Cursor
+## 2. Cursor 中的核心 APM 设置
 
-### 2.1. Managing Agents with Dedicated Cursor Tabs
+### 2.1. 使用专用 Cursor 选项卡管理代理
 
-The core principle for running APM in Cursor is:
+在 Cursor 中运行 APM 的核心原则是：
 
-**One Cursor Chat Tab = One APM Agent Instance**
+**一个 Cursor 聊天选项卡 = 一个 APM 代理实例**
 
-*   **Dedicate Tabs:** Maintain a separate, persistent AI chat tab for each active agent in your project (e.g., Manager Agent, Implementation Agent A, Implementation Agent B, Debugger Agent).
-*   **Name Tabs Clearly:** Use Cursor's tab renaming feature to label each tab according to its agent role and potential focus (e.g., "APM Manager - Main", "APM Agent A - Backend"). This is crucial for organization.
-*   **Maintain Separation:** Always interact with an agent within its designated tab. Avoid cross-contamination of roles between tabs to prevent context confusion.
+*   **专用选项卡：** 为项目中的每个活动代理（例如，经理代理、实施代理 A、实施代理 B、调试器代理）维护一个独立的、持久的 AI 聊天选项卡。
+*   **清晰命名选项卡：** 使用 Cursor 的选项卡重命名功能，根据其代理角色和潜在重点来标记每个选项卡（例如，“APM 经理 - 主要”、“APM 代理 A - 后端”）。这对组织至关重要。
+*   **保持分离：** 始终在其指定的选项卡内与代理进行交互。避免在选项卡之间交叉污染角色，以防止上下文混淆。
 
-### 2.2. Using APM Prompts for Agent Initialization and Tasks
+### 2.2. 使用 APM 提示进行代理初始化和任务
 
-*   **Initialization:** Start each agent by copying the *entire* content of its corresponding initialization prompt from the `/prompts` directory and pasting it as the **very first message** in that agent's dedicated Cursor tab.
-    *   Manager Agent: Use `prompts/00_Initial_Manager_Setup/01_Initiation_Prompt.md`.
-    *   Implementation/Specialized Agents: Use `prompts/02_Utility_Prompts_And_Format_Definitions/Implementation_Agent_Onboarding.md`.
-*   **Task Assignment:**
-    1.  Work with the **Manager Agent** (in its tab) to prepare the `Task Assignment Prompt` (referencing `prompts/01_Manager_Agent_Core_Guides/03_Task_Assignment_Prompts_Guide.md`).
-    2.  Copy the finalized prompt.
-    3.  Paste the prompt into the designated **Implementation Agent's** tab.
-*   **Other Prompts/Guides:** Similarly, copy content from relevant guides (e.g., `02_Codebase_Guidance.md`, handover prompts) when instructing agents as specified in the APM workflow.
+*   **初始化：** 通过从 `/prompts` 目录复制其相应初始化提示的*全部*内容并将其作为该代理专用 Cursor 选项卡中的**第一条消息**粘贴来启动每个代理。
+    *   经理代理：使用 `prompts/00_Initial_Manager_Setup/01_Initiation_Prompt.md`。
+    *   实施/专门代理：使用 `prompts/02_Utility_Prompts_And_Format_Definitions/Implementation_Agent_Onboarding.md`。
+*   **任务分配：**
+    1.  与**经理代理**（在其选项卡中）一起准备 `任务分配提示`（参考 `prompts/01_Manager_Agent_Core_Guides/03_Task_Assignment_Prompts_Guide.md`）。
+    2.  复制最终确定的提示。
+    3.  将提示粘贴到指定的**实施代理**的选项卡中。
+*   **其他提示/指南：** 同样，在按照 APM 工作流程中的规定指示代理时，从相关指南（例如，`02_Codebase_Guidance.md`、交接提示）中复制内容。
 
-## 3. Leveraging Cursor's IDE Features
+## 3. 利用 Cursor 的 IDE 功能
 
-Cursor's built-in capabilities can significantly enhance APM interactions:
+Cursor 的内置功能可以显著增强 APM 交互：
 
-*   **Contextualizing with Files/Folders (`@` symbol):** Use `@` to attach relevant files (e.g., `Implementation_Plan.md`, specific code files) or entire folders. This is crucial for providing context to the Manager Agent for reviews or to Implementation Agents for code understanding.
-*   **Automatic Codebase Context:** Cursor automatically attempts to provide relevant codebase context. You can improve this by explicitly referencing key files or symbols.
-*   **Direct File Edits (Use with Care):** Cursor agents can propose direct file edits (`Cmd+K` or `Ctrl+K` with code selected, or via chat suggestions). This can speed up implementation for simple changes.
-    *   **User Review:** Always carefully review any direct edits proposed by an agent before applying them.
-    *   **Logging Still Required:** Even if an agent makes a direct edit, ensure it reports its action back. You must then confirm logging and instruct the agent to log the change (or log it yourself) in the `Memory_Bank.md` using the standard format.
-*   **Diff Viewer:** Pay attention to Cursor's built-in diff viewer when agents propose changes via chat or direct edits.
+*   **使用文件/文件夹（`@` 符号）进行上下文化：** 使用 `@` 附加相关文件（例如，`Implementation_Plan.md`、特定代码文件）或整个文件夹。这对于向经理代理提供审查上下文或向实施代理提供代码理解上下文至关重要。
+*   **自动代码库上下文：** Cursor 会自动尝试提供相关的代码库上下文。您可以通过明确引用关键文件或符号来改进这一点。
+*   **直接文件编辑（谨慎使用）：** Cursor 代理可以提出直接文件编辑（选择代码后按 `Cmd+K` 或 `Ctrl+K`，或通过聊天建议）。这可以加快简单更改的实施速度。
+    *   **用户审查：** 在应用代理提出的任何直接编辑之前，请务必仔细审查。
+    *   **仍然需要记录：** 即使代理进行了直接编辑，也要确保它报告其操作。然后，您必须确认记录并指示代理使用标准格式将更改记录在 `Memory_Bank.md` 中（或自己记录）。
+*   **差异查看器：** 当代理通过聊天或直接编辑提出更改时，请注意 Cursor 的内置差异查看器。
 
-## 4. Interacting with APM Artifacts (e.g., Memory Bank)
+## 4. 与 APM 产物（例如，内存库）交互
 
-*   **User as Bridge:** You, the User, typically act as the intermediary for file content. Copy relevant code snippets, error messages, or outputs between agent chat tabs as needed (e.g., pasting an Implementation Agent's output into the Manager's tab for review, or copying a code snippet into `Memory_Bank.md`).
-*   **Reviewing the Memory Bank:** When asking the Manager Agent to review completed work:
-    1.  Have `Memory_Bank.md` open in your editor.
-    2.  Use `@Memory_Bank.md` in your prompt to the Manager (e.g., "Please review the latest log entry for Agent A in `@Memory_Bank.md`").
-    3.  Alternatively, copy the relevant log entry text from the file and paste it directly into the Manager's chat.
+*   **用户作为桥梁：** 您（用户）通常充当文件内容的中介。根据需要在代理聊天选项卡之间复制相关的代码片段、错误消息或输出（例如，将实施代理的输出粘贴到经理的选项卡中以供审查，或将代码片段复制到 `Memory_Bank.md` 中）。
+*   **审查内存库：** 当要求经理代理审查已完成的工作时：
+    1.  在您的编辑器中打开 `Memory_Bank.md`。
+    2.  在给经理的提示中使用 `@Memory_Bank.md`（例如，“请在 `@Memory_Bank.md` 中审查代理 A 的最新日志条目”）。
+    3.  或者，从文件中复制相关的日志条目文本并将其直接粘贴到经理的聊天中。
 
-## 5. Optional: Enhancing APM with Cursor Project Rules (Recommended)
+## 5. 可选：使用 Cursor 项目规则增强 APM（推荐）
 
-The APM framework includes a `rules/` directory (which you should mirror to `.cursor/rules/` in your project) containing pre-defined [Cursor Project Rules](https://docs.cursor.com/context/rules). These are designed to further enhance the reliability and efficiency of APM agents when working within the Cursor IDE. **Using these rules is entirely optional but highly recommended for Cursor users.**
+APM 框架包括一个 `rules/` 目录（您应该将其镜像到项目中的 `.cursor/rules/`），其中包含预定义的 [Cursor 项目规则](https://docs.cursor.com/context/rules)。这些规则旨在在 Cursor IDE 中工作时进一步增强 APM 代理的可靠性和效率。**对于 Cursor 用户，强烈建议使用这些规则，但完全可选。**
 
-### 5.1. Purpose and Benefits of APM Project Rules
+### 5.1. APM 项目规则的目的和好处
 
-These rules provide persistent, scoped instructions to the AI, particularly the Manager Agent, at critical junctures in the APM workflow. They aim to:
+这些规则在 APM 工作流程的关键时刻为 AI（特别是经理代理）提供持久的、范围化的指令。它们旨在：
 
-*   **Reinforce Core Protocols:** Help the Manager Agent stay on track with APM procedures, especially during complex information gathering or when context might become fragmented.
-*   **Ensure Consistency:** Remind the agent of standard formats and source documents for key APM artifacts (e.g., `Implementation_Plan.md`, Memory Bank files).
-*   **Improve Efficiency:** Provide quick, targeted reminders that can prevent errors or reduce the need for re-prompting, minimizing impact on context window usage.
-*   **Increased Reliability:** Reduces instances of agents deviating from the APM protocol.
-*   **Reduced User Overhead:** Minimizes the need for users to manually repeat common instructions or corrections.
+*   **强化核心协议：** 帮助经理代理遵循 APM 程序，尤其是在复杂的信息收集过程中或上下文可能变得支离破碎时。
+*   **确保一致性：** 提醒代理关键 APM 产物（例如，`Implementation_Plan.md`、内存库文件）的标准格式和源文档。
+*   **提高效率：** 提供快速、有针对性的提醒，可以防止错误或减少重新提示的需要，从而最大限度地减少对上下文窗口使用的影响。
+*   **提高可靠性：** 减少代理偏离 APM 协议的情况。
+*   **减少用户开销：** 最大限度地减少用户手动重复常见指令或更正的需要。
 
-### 5.2. How APM Rules Work (Agent Requested Type)
+### 5.2. APM 规则如何工作（代理请求类型）
 
-The APM rules provided are primarily of the `Agent Requested` type. This means:
+提供的 APM 规则主要是 `代理请求` 类型。这意味着：
 
-1.  Core APM prompts (e.g., `01_Initiation_Prompt.md`, `02_Codebase_Guidance.md`) contain conditional "self-notes" for the Manager Agent.
-2.  These notes suggest that if the User has Cursor Rules enabled and the Manager Agent deems it helpful, it *may consider requesting* the relevant rule by its name (e.g., `@apm_discovery_synthesis_reminder`).
-3.  The agent uses the rule's `description` (in its `.mdc` file) and current context to decide if activating the rule is appropriate.
+1.  核心 APM 提示（例如，`01_Initiation_Prompt.md`、`02_Codebase_Guidance.md`）包含经理代理的条件“自注”。
+2.  这些注释表明，如果用户启用了 Cursor 规则并且经理代理认为有帮助，它*可以考虑*按其名称请求相关规则（例如，`@apm_discovery_synthesis_reminder`）。
+3.  代理使用规则的 `description`（在其 `.mdc` 文件中）和当前上下文来决定激活规则是否合适。
 
-This design ensures APM remains functional even if rules are not used or if APM is used outside Cursor.
+这种设计确保即使不使用规则或在 Cursor 之外使用 APM，APM 仍然可以正常工作。
 
-### 5.3. Available Rules (Supporting the Initiation Phase)
+### 5.3. 可用规则（支持启动阶段）
 
-Initially, rules are provided to support the Manager Agent's **Initiation Phase**. These are in `agentic-project-management/rules/`:
+最初，提供规则以支持经理代理的**启动阶段**。这些规则位于 `agentic-project-management/rules/` 中：
 
 *   **`apm_discovery_synthesis_reminder.mdc`**
-    *   **Purpose:** Helps the MA synthesize information and transition to planning after extensive discovery.
+    *   **目的：** 帮助 MA 在广泛发现后综合信息并过渡到规划。
 
 *   **`apm_plan_format_source.mdc`**
-    *   **Purpose:** Reminds the MA of the correct guide for `Implementation_Plan.md` formatting.
+    *   **目的：** 提醒 MA `Implementation_Plan.md` 格式的正确指南。
 
 *   **`apm_memory_system_format_source.mdc`**
-    *   **Purpose:** Reminds the MA of the correct guide for Memory Bank formatting.
+    *   **目的：** 提醒 MA 内存库格式的正确指南。
 
 *   **`apm_impl_plan_critical_elements_reminder.mdc`**
-    *   **Purpose:** Reminds the MA to ensure that the `Implementation_Plan.md` includes: 1) Explicit Agent Assignment for every task (considering task distribution), and 2) "Guiding Notes" for critical action steps to ensure methodological consistency.
+    *   **目的：** 提醒 MA 确保 `Implementation_Plan.md` 包括：1) 每个任务的明确代理分配（考虑任务分配），以及 2) 关键操作步骤的“指导说明”，以确保方法的一致性。
     
-
 *   **`apm_memory_naming_validation_reminder.mdc`**
-    *   **Purpose:** Prompts the MA to validate all Memory Bank file/directory names against the `Implementation_Plan.md` *before* their creation and to strictly adhere to defined naming conventions.
+    *   **目的：** 提示 MA 在创建内存库文件/目录之前，根据 `Implementation_Plan.md` 验证所有内存库文件/目录名称，并严格遵守已定义的命名约定。
     
-
 *   **`apm_task_prompt_plan_guidance_incorporation_reminder.mdc`**
-    *   **Purpose:** Ensures that when the MA is crafting `Task Assignment Prompts`, it explicitly incorporates and expands upon any "Guiding Notes" found in the `Implementation_Plan.md` for the relevant task steps.
+    *   **目的：** 确保当 MA 正在制作 `任务分配提示` 时，它明确地包含并扩展 `Implementation_Plan.md` 中相关任务步骤的任何“指导说明”。
 
+有关每个规则的详细描述及其对代理的建议性描述，请参阅 `rules/README.md`。
 
-Refer to `rules/README.md` for detailed descriptions of each rule and their suggestive descriptions for the agent.
+### 5.4. 在您的项目中激活 APM 项目规则
 
-### 5.4. Activating APM Project Rules in Your Project
+1.  **找到规则：** 找到 `agentic-project-management/rules/` 目录。
+2.  **创建 `.cursor/rules/`：** 在您的项目根目录中，如果不存在，则创建 `.cursor/rules/`。
+3.  **复制规则：** 将所需的 `.mdc` 规则文件从 APM `rules/` 目录复制到您项目的 `.cursor/rules/` 目录中。
+4.  **在 Cursor 中启用：** 确保在 `Cursor 设置 > 规则` 中启用了“项目规则”。
 
-1.  **Locate Rules:** Find the `agentic-project-management/rules/` directory.
-2.  **Create `.cursor/rules/`:** In your project's root, create `.cursor/rules/` if it doesn't exist.
-3.  **Copy Rules:** Copy desired `.mdc` rule files from the APM `rules/` directory into your project's `.cursor/rules/` directory.
-4.  **Enable in Cursor:** Ensure "Project Rules" are enabled in `Cursor Settings > Rules`.
+然后，APM 中的条件提示将允许 MA 利用这些规则。
 
-Conditional prompts in APM will then allow the MA to leverage these rules.
+### 5.5. 其他 IDE 的概念
 
-### 5.5. Concept for Other IDEs
+IDE 特定的、持久的、范围化的指令的原则可以适用于提供类似功能的其他 AI 集成 IDE。如果您探索此功能，请考虑通过 APM GitHub 仓库分享见解。
 
-The principle of IDE-specific, persistent, scoped instructions could be adapted for other AI-integrated IDEs offering similar features. Consider sharing insights via the APM GitHub repository if you explore this.
+### 5.6. 有关 Cursor 规则的更多资源
+有关在 Cursor 中创建和管理规则的详细信息，包括 `.mdc` 格式和不同的规则类型，请参阅 [Cursor 的官方规则文档](https://docs.cursor.com/context/rules)。
 
-### 5.6. Further Resources on Cursor Rules
-For detailed information on creating and managing rules in Cursor, including the `.mdc` format and different rule types, please consult [Cursor's official documentation on Rules](https://docs.cursor.com/context/rules).
+## 6. 最佳实践和重要注意事项
 
-## 6. Best Practices and Important Considerations
+*   **专注：** 让每个代理选项卡专注于其指定的 APM 角色。避免要求经理编写实施代码或实施者制定高级计划。
+*   **上下文管理：** 注意 Cursor 中的上下文窗口限制。对于长时间的对话或大型项目：
+    *   当代理接近其上下文限制时，使用 APM 交接协议。
+    *   在可能的情况下总结信息。
+*   **规则激活和更新：**
+    *   规则是根据经理代理的判断激活的。如果规则未按预期工作，请确保已启用该规则并且 MA 已意识到它。
+    *   使您的 APM 规则的本地副本与主 APM 框架的任何更改保持同步。
 
-*   **Focus:** Keep each agent tab focused on its designated APM role. Avoid asking the Manager to write implementation code or an Implementer to devise high-level plans.
-*   **Context Management:** Be mindful of context window limits in Cursor. For long conversations or large projects:
-    *   Use the APM Handover Protocol when an agent nears its context limit.
-    *   Summarize information where possible.
-*   **Rule Activation & Updates:**
-    *   Rules are activated based on the Manager Agent's judgment. If a rule isn't working as expected, ensure it's enabled and the MA is aware of it.
-    *   Keep your local copies of APM rules up-to-date with any changes from the main APM framework.
-
-By leveraging Cursor's tabbed interface and context features within the structured APM framework, you can create a powerful and organized environment for tackling complex projects with AI assistance. 
+通过在结构化的 APM 框架内利用 Cursor 的选项卡式界面和上下文功能，您可以创建一个强大而有组织的环境，以应对 AI 辅助的复杂项目。 

@@ -1,54 +1,54 @@
-# APM Framework - Optional Cursor IDE Rules
+# APM 框架 - 可选的 Cursor IDE 规则
 
-This directory, `rules/` (intended to be mirrored as `.cursor/rules/` in a user's project if they choose to use this feature), contains optional [Cursor IDE Rules](https://docs.cursor.com/context/rules). These rules are designed to enhance the robustness and efficiency of the Agentic Project Management (APM) framework when used within the Cursor IDE.
+这个目录 `rules/`（如果用户选择使用此功能，则旨在镜像为用户项目中的 `.cursor/rules/`）包含可选的 [Cursor IDE 规则](https://docs.cursor.com/context/rules)。这些规则旨在在 Cursor IDE 中使用时，增强代理项目管理 (APM) 框架的稳健性和效率。
 
-**Their use is entirely optional and primarily benefits users operating APM within Cursor.** The core APM prompts are designed to function effectively without these rules.
+**它们的使用完全是可选的，主要惠及在 Cursor 中操作 APM 的用户。** 核心 APM 提示旨在在没有这些规则的情况下也能有效运行。
 
-## How These Rules Work
+## 这些规则如何工作
 
-Cursor Rules allow you to provide persistent, scoped instructions to the AI. For context, the Manager Agent has been prompted with conditional "self-notes" at specific points in its core protocols (e.g., in `01_Initiation_Prompt.md` or `02_Codebase_Guidance.md`). These self-notes suggest that *if* the User has Cursor Rules enabled and the MA deems it helpful, it *may consider requesting* the relevant rule by its name (e.g., `@rule_name`).
+Cursor 规则允许您向 AI 提供持久的、有范围的指令。在此背景下，经理代理在其核心协议的特定点（例如，在 `01_Initiation_Prompt.md` 或 `02_Codebase_Guidance.md` 中）被提示了有条件的“自注”。这些自注建议，*如果*用户启用了 Cursor 规则并且 MA 认为有帮助，它*可以考虑*按其名称请求相关规则（例如，`@rule_name`）。
 
-This approach ensures:
-1.  **Optionality:** The APM framework doesn't break if rules aren't used or if used outside Cursor.
-2.  **Targeted Assistance:** Rules are invoked only when potentially beneficial for specific, fragile parts of the workflow.
-3.  **Contextual Relevance:** The AI (Manager Agent) uses the rule's description and its current operational context to decide if activating the rule is appropriate.
+这种方法确保：
+1.  **可选性：** 如果不使用规则或在 Cursor 之外使用，APM 框架不会中断。
+2.  **有针对性的帮助：** 规则仅在可能对工作流程的特定、脆弱部分有益时才被调用。
+3.  **上下文相关性：** AI（经理代理）使用规则的描述及其当前的​​操作上下文来决定激活规则是否合适。
 
-## Available Rules (Supporting Manager Agent)
+## 可用规则（支持经理代理）
 
-### General Initiation & Planning Phase
+### 常规启动和规划阶段
 
 *   **`apm_discovery_synthesis_reminder.mdc`**
-    *   **Description (from rule):** "When the MA has gathered extensive info (e.g., via `codebase_search`, `read_file`), this rule prompts it to synthesize findings, identify next steps for planning, and explicitly consult the User before deep-diving into `Implementation_Plan.md` generation. Helps prevent premature planning based on incomplete synthesis."
-    *   **Purpose:** Aids the Manager Agent in transitioning from information gathering (Discovery) to structured planning, ensuring user alignment before committing to a detailed plan.
+    *   **规则描述：** “当 MA 收集了大量信息（例如，通过 `codebase_search`、`read_file`）时，此规则会提示它综合发现，确定规划的后续步骤，并在深入生成 `Implementation_Plan.md` 之前明确咨询用户。有助于防止基于不完整综合的过早规划。”
+    *   **目的：** 帮助经理代理从信息收集（发现）过渡到结构化规划，确保在提交详细计划之前与用户保持一致。
 
 *   **`apm_plan_format_source.mdc`**
-    *   **Description (from rule):** "Reminds MA that `01_Implementation_Plan_Guide.md` is the authoritative source for formatting the `Implementation_Plan.md`."
-    *   **Purpose:** Ensures the MA uses the correct guide when tasked with generating or modifying the Implementation Plan, promoting consistency.
+    *   **规则描述：** “提醒 MA `01_Implementation_Plan_Guide.md` 是格式化 `Implementation_Plan.md` 的权威来源。”
+    *   **目的：** 确保 MA 在被要求生成或修改实施计划时使用正确的指南，以促进一致性。
 
 *   **`apm_memory_system_format_source.mdc`**
-    *   **Description (from rule):** "Reminds MA that `02_Memory_Bank_Guide.md` is the authoritative source for Memory Bank system setup (single vs multi-file) and initial file headers."
-    *   **Purpose:** Ensures the MA uses the correct guide for proposing and setting up the project's Memory Bank, aligning with project complexity.
+    *   **规则描述：** “提醒 MA `02_Memory_Bank_Guide.md` 是内存库系统设置（单个与多个文件）和初始文件头的权威来源。”
+    *   **目的：** 确保 MA 在提议和设置项目的内存库时使用正确的指南，以与项目复杂性保持一致。
 
-### Implementation Plan Integrity
+### 实施计划完整性
 
-*   **`apm_impl_plan_critical_elements_reminder.mdc`** (New)
-    *   **Description (from rule):** "Reminder for Implementation Plan: Ensure 1) Explicit Agent Assignment (consider distribution) and 2) 'Guiding Notes' for critical action steps are defined for ALL tasks."
-    *   **Purpose:** Reinforces the necessity of assigning agents to every task and including crucial "Guiding Notes" for methodological consistency directly within the `Implementation_Plan.md`. Helps prevent ambiguity and ensures tasks are well-defined for subsequent agent assignment.
+*   **`apm_impl_plan_critical_elements_reminder.mdc`** (新增)
+    *   **规则描述：** “实施计划提醒：确保为所有任务定义 1) 明确的代理分配（考虑分配）和 2) 关键操作步骤的'指导说明'。”
+    *   **目的：** 强调为每个任务分配代理的必要性，并在 `Implementation_Plan.md` 中直接包含关键的"指导说明"以确保方法的一致性。有助于防止歧义，并确保为后续的代理分配明确定义任务。
 
-### Memory System Integrity
+### 内存系统完整性
 
-*   **`apm_memory_naming_validation_reminder.mdc`** (New)
-    *   **Description (from rule):** "Reminder: Validate ALL Memory Bank file/directory names against the Implementation Plan BEFORE creation. Adhere to conventions in 02_Memory_Bank_Guide.md."
-    *   **Purpose:** Promotes strict adherence to Memory Bank naming conventions and validation against the `Implementation_Plan.md` *before* any file or directory is created. This is crucial for preventing structural errors in the Memory Bank.
+*   **`apm_memory_naming_validation_reminder.mdc`** (新增)
+    *   **规则描述：** “提醒：在创建之前，根据实施计划验证所有内存库文件/目录名称。遵守 02_Memory_Bank_Guide.md 中的约定。”
+    *   **目的：** 促进严格遵守内存库命名约定，并在创建任何文件或目录*之前*根据 `Implementation_Plan.md` 进行验证。这对于防止内存库中的结构性错误至关重要。
 
-### Task Assignment Consistency
+### 任务分配一致性
 
-*   **`apm_task_prompt_plan_guidance_incorporation_reminder.mdc`** (New)
-    *   **Description (from rule):** "Reminder for Task Assignment Prompts: Explicitly incorporate and expand upon any 'Guiding Notes' found in the Implementation Plan's action steps."
-    *   **Purpose:** Ensures that when the Manager Agent generates detailed `Task Assignment Prompts`, it correctly uses and elaborates on the "Guiding Notes" provided in the `Implementation_Plan.md`. This maintains a consistent line of instruction from high-level plan to detailed task execution.
+*   **`apm_task_prompt_plan_guidance_incorporation_reminder.mdc`** (新增)
+    *   **规则描述：** “任务分配提示提醒：明确地包含并扩展实施计划操作步骤中的任何'指导说明'。”
+    *   **目的：** 确保当经理代理生成详细的`任务分配提示`时，它能正确使用并详细阐述 `Implementation_Plan.md` 中提供的"指导说明"。这在从高级计划到详细任务执行的指令链中保持了一致性。
 
-## Using These Rules in Cursor
+## 在 Cursor 中使用这些规则
 
-1.  If you clone the APM framework, this `rules/` directory is included.
-2.  To make these rules active in your Cursor project, copy the contents of this `rules/` directory into a `.cursor/rules/` directory at the root of your project.
-3.  Ensure that "Project Rules" are enabled in your Cursor settings.
+1.  如果您克隆 APM 框架，则此 `rules/` 目录已包含在内。
+2.  要使这些规则在您的 Cursor 项目中生效，请将此 `rules/` 目录的内容复制到项目根目录下的 `.cursor/rules/` 目录中。
+3.  确保在您的 Cursor 设置中启用了"项目规则"。

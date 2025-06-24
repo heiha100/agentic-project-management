@@ -1,126 +1,161 @@
-# APM Memory Bank System Guide
+# APM 内存库系统指南
 
-## 1. Purpose
+## 1. 目的
 
-This guide provides the Manager Agent (MA) with instructions for determining, proposing, and setting up the most suitable Memory Bank System for a given project. The Memory Bank is crucial for logging all significant actions, decisions, and outputs from Implementation Agents.
+本指南为经理代理 (MA) 提供了确定、提议和设置为给定项目最合适的内存库系统的说明。内存库对于记录实施代理的所有重要操作、决策和输出至关重要。
 
-The choice of Memory Bank System (a single file or a multi-file directory structure) is made in conjunction with the creation of the `Implementation_Plan.md`. This guide defines how to assess project complexity (derived from the `Implementation_Plan.md`) to make this choice and specifies the initial structure and headers for the Memory Bank files.
+内存库系统（单个文件或多文件目录结构）的选择是与创建 `Implementation_Plan.md` 同时进行的。本指南定义了如何评估项目复杂性（源自 `Implementation_Plan.md`）以做出此选择，并指定了内存库文件的初始结构和标题。
 
-This guide complements `prompts/02_Utility_Prompts_And_Format_Definitions/Memory_Bank_Log_Format.md`, which details the format for *individual log entries* within these files.
+本指南是对 `prompts/02_Utility_Prompts_And_Format_Definitions/Memory_Bank_Log_Format.md` 的补充，后者详细说明了这些文件中*单个日志条目*的格式。
 
-## 2. Core Principles for Memory Bank System Design
+## 2. 内存库系统设计的核心原则
 
-When deciding on a Memory Bank System, aim for:
+在决定内存库系统时，应以以下为目标：
 
-*   **Scalability:** The system should efficiently handle the project's current and anticipated complexity and volume of log entries.
-*   **Organization:** Logs must be easy for the User and all Agents (current or future) to locate, navigate, and understand.
-*   **Clarity:** The structure should be intuitive and logically mirror the project's breakdown in the `Implementation_Plan.md`.
-*   **Consistency:** A uniform approach to where and how information is logged.
-*   **Alignment:** The Memory Bank structure should directly reflect the organizational structure (phases, tasks) of the `Implementation_Plan.md`.
+*   **可扩展性：** 系统应能有效处理项目当前和预期的复杂性以及日志条目的数量。
+*   **组织性：** 日志必须易于用户和所有代理（当前或未来）定位、导航和理解。
+*   **清晰性：** 结构应直观，并逻辑上反映 `Implementation_Plan.md` 中的项目分解。
+*   **一致性：** 记录信息的位置和方式应采用统一的方法。
+*   **对齐性：** 内存库结构应直接反映 `Implementation_Plan.md` 的组织结构（阶段、任务）。
 
-## 3. Assessing Project Complexity for System Selection
+## 3. 评估项目复杂性以进行系统选择
 
-Before generating the full `Implementation_Plan.md` (but after conceptualizing its structure and summarizing it to the User), you, the Manager Agent, must assess its likely complexity to determine the appropriate Memory Bank system.
+在生成完整的 `Implementation_Plan.md` 之前（但在概念化其结构并向用户总结之后），您（经理代理）必须评估其可能的复杂性，以确定合适的内存库系统。
 
-**Consider the following factors from your understanding of the forthcoming `Implementation_Plan.md`:**
+**从您对即将到来的 `Implementation_Plan.md` 的理解中，考虑以下因素：**
 
-*   **Project Phasing:**
-    *   **High Complexity Indicator:** The plan is (or will be) divided into multiple distinct `## Phase X:` sections.
-    *   **Lower Complexity Indicator:** The plan has no formal phases, or is essentially a single phase.
-*   **Number and Nature of Tasks:**
-    *   **High Complexity Indicator:** A large number of `### Task Y:` entries, tasks assigned to multiple different agents, or tasks covering very distinct domains of work.
-    *   **Lower Complexity Indicator:** A manageable number of tasks, primarily handled by one or two closely collaborating agents.
-*   **Task Granularity and Detail:**
-    *   **High Complexity Indicator:** Tasks have many detailed sub-components and action steps, suggesting numerous potential log entries per task.
-*   **Project Duration and Agent Count:**
-    *   **High Complexity Indicator:** Anticipated long project duration or the involvement of many specialized Implementation Agents, each potentially generating many logs.
-    *   **Lower Complexity Indicator:** Shorter projects, fewer agents.
+*   **项目分期：**
+    *   **高复杂性指标：** 计划被（或将被）划分为多个不同的 `## 阶段 X:` 部分。
+    *   **较低复杂性指标：** 计划没有正式的阶段，或者基本上是单个阶段。
+*   **任务的数量和性质：**
+    *   **高复杂性指标：** 大量的 `### 任务 Y:` 条目，分配给多个不同代理的任务，或涵盖非常不同工作领域的任务。
+    *   **较低复杂性指标：** 数量可管理的任务，主要由一个或两个密切协作的代理处理。
+*   **任务粒度和细节：**
+    *   **高复杂性指标：** 任务有许多详细的子组件和操作步骤，表明每个任务可能有大量的日志条目。
+*   **项目持续时间和代理数量：**
+    *   **高复杂性指标：** 预计项目持续时间较长或涉及许多专业实施代理，每个代理都可能生成许多日志。
+    *   **较低复杂性指标：** 项目较短，代理较少。
 
-**Decision Point:**
+**决策点：**
 
-*   **Choose a Multi-File Directory System (`Memory/`) if:** Multiple high complexity indicators are present (e.g., distinct phases AND numerous complex tasks).
-*   **Choose a Single-File System (`Memory_Bank.md`) if:** Primarily lower complexity indicators are present.
+*   **如果存在多个高复杂性指标（例如，不同的阶段和许多复杂的任务），请选择多文件目录系统 (`Memory/`)。**
+*   **如果主要存在较低复杂性指标，请选择单文件系统 (`Memory_Bank.md`)。**
 
-Use your judgment to balance these factors. When in doubt for moderately complex projects, a multi-file system can offer better long-term organization.
+运用您的判断来平衡这些因素。在中等复杂度的项目中，如果不确定，多文件系统可以提供更好的长期组织。
 
-## 4. Memory Bank System Options
+## 4. 内存库系统选项
 
-### 4.1. Option 1: Single-File System (`Memory_Bank.md`)
+### 4.1. 选项 1：单文件系统 (`Memory_Bank.md`)
 
-*   **When to Use:** Recommended for straightforward projects, smaller scopes, or when the `Implementation_Plan.md` is relatively simple (e.g., few tasks, no distinct phases, limited agent involvement).
-*   **Setup:**
-    1.  You will create a single file named `Memory_Bank.md` at the root of the project workspace.
-    2.  Populate this file with the following header:
+*   **使用时机：** 建议用于直接的项目、范围较小的项目，或者当 `Implementation_Plan.md` 相对简单时（例如，任务少，没有不同的阶段，代理参与有限）。
+*   **设置：**
+    1.  您将在项目工作区的根目录创建一个名为 `Memory_Bank.md` 的单个文件。
+    2.  用以下标题填充此文件：
 
     ```markdown
-    # APM Project Memory Bank
+    # APM 项目内存库
     
-    Project Goal: [Brief project goal, taken or summarized from the Implementation Plan's introduction]
-    Date Initiated: [YYYY-MM-DD of Memory Bank creation]
-    Manager Agent Session ID: [Your current session identifier, if applicable/available]
-    Implementation Plan Reference: `Implementation_Plan.md`
+    项目目标：[简要的项目目标，取自或总结自实施计划的介绍]
+    启动日期：[内存库创建的 YYYY-MM-DD]
+    经理代理会话 ID：[您当前的会话标识符，如果适用/可用]
+    实施计划参考：`Implementation_Plan.md`
     
     ---
     
-    ## Log Entries
+    ## 日志条目
     
-    *(All subsequent log entries in this file MUST follow the format defined in `prompts/02_Utility_Prompts_And_Format_Definitions/Memory_Bank_Log_Format.md`)*
+    *（此文件中的所有后续日志条目都必须遵循 `prompts/02_Utility_Prompts_And_Format_Definitions/Memory_Bank_Log_Format.md` 中定义的格式）*
     ```
 
-### 4.2. Option 2: Multi-File Directory System (`Memory/`)
+### 4.2. 选项 2：多文件目录系统 (`Memory/`)
 
-*   **When to Use:** Recommended for complex projects, especially those with multiple phases, numerous distinct tasks, multiple diverse workstreams, or long anticipated durations, as reflected in the structure of the `Implementation_Plan.md`.
-*   **Setup:**
-    1.  You will create a root directory named `Memory/` at the project root.
-    2.  **Inside the `Memory/` directory, create a `README.md` file** to explain its structure. Example content for `Memory/README.md`:
+*   **使用时机：** 建议用于复杂的项目，特别是那些具有多个阶段、大量不同任务、多个不同工作流或预计持续时间较长的项目，如 `Implementation_Plan.md` 的结构所示。
+*   **设置：**
+    1.  您将在项目根目录创建一个名为 `Memory/` 的根目录。
+    2.  **在 `Memory/` 目录中，创建一个 `README.md` 文件**以解释其结构。`Memory/README.md` 的示例内容：
         ```markdown
-        # APM Project Memory Bank Directory
+        # APM 项目内存库目录
         
-        This directory houses the detailed log files for the [Project Name] project.
+        此目录存放 [项目名称] 项目的详细日志文件。
         
-        ## Structure:
+        ## 结构：
         
-        (Describe the structure chosen, e.g.:
-        - Logs are organized into subdirectories corresponding to each Phase in the `Implementation_Plan.md`.
-        - Within each phase directory, individual `.md` files capture logs for specific tasks.
-        OR
-        - Logs for each major task from the `Implementation_Plan.md` are stored as individual `.md` files directly in this directory.)
+        （描述所选的结构，例如：
+        - 日志被组织到与 `Implementation_Plan.md` 中每个阶段相对应的子目录中。
+        - 在每个阶段目录中，单个 `.md` 文件捕获特定任务的日志。
+        或者
+        - `Implementation_Plan.md` 中每个主要任务的日志都作为单个 `.md` 文件直接存储在此目录中。）
         
-        All log entries within these files adhere to the format defined in `prompts/02_Utility_Prompts_And_Format_Definitions/Memory_Bank_Log_Format.md`.
+        这些文件中的所有日志条目都遵守 `prompts/02_Utility_Prompts_And_Format_Definitions/Memory_Bank_Log_Format.md` 中定义的格式。
         ```
-    3.  **Determine Sub-directory and File Naming Strategy based on `Implementation_Plan.md`:**
-        *   **A. If `Implementation_Plan.md` has Phases (e.g., `## Phase 1: Backend Setup`):**
-            *   For each Phase, create a corresponding subdirectory within `Memory/`. Use clear, filesystem-friendly names derived from the plan (e.g., `Memory/Phase_1_Backend_Setup/`, `Memory/Phase_2_Frontend_Dev/`).
-            *   Within each phase subdirectory, create individual Markdown files for logging tasks belonging to that phase.
-            *   **Log File Naming Convention:** `Task_[Task_Identifier]_Log.md` (e.g., `Task_A_User_Auth_Log.md`, `Task_B_Activity_API_Log.md`). The `Task_Identifier` should be concise and map clearly to the task in `Implementation_Plan.md`.
-            *   **Example Path:** `Memory/Phase_1_Backend_Setup/Task_A_User_Auth_Log.md`
-        *   **B. If `Implementation_Plan.md` has no Phases but is Complex (Many Distinct Tasks):**
-            *   Create individual Markdown log files directly under the `Memory/` directory.
-            *   **Log File Naming Convention:** `Task_[Task_Identifier]_Log.md` (e.g., `Task_Data_Processing_Log.md`).
-            *   **Example Path:** `Memory/Task_Data_Processing_Log.md`
-    4.  **Populate each individual log file (`Task_..._Log.md`) with the following header:**
+    3.  **根据 `Implementation_Plan.md` 确定子目录和文件命名策略：**
+        *   **A. 如果 `Implementation_Plan.md` 有阶段（例如，`## 阶段 1：后端设置`）：**
+            *   对于每个阶段，在 `Memory/` 中创建一个相应的子目录。使用从计划中派生的清晰、文件系统友好的名称（例如，`Memory/Phase_1_Backend_Setup/`、`Memory/Phase_2_Frontend_Dev/`）。
+            *   在每个阶段子目录中，为属于该阶段的日志任务创建单独的 Markdown 文件。
+            *   **日志文件命名约定：** `Task_[任务标识符]_Log.md`（例如，`Task_A_User_Auth_Log.md`、`Task_B_Activity_API_Log.md`）。`任务标识符`应简洁，并清楚地映射到 `Implementation_Plan.md` 中的任务。
+            *   **示例路径：** `Memory/Phase_1_Backend_Setup/Task_A_User_Auth_Log.md`
+        *   **B. 如果 `Implementation_Plan.md` 没有阶段但很复杂（许多不同的任务）：**
+            *   直接在 `Memory/` 目录下创建单独的 Markdown 日志文件。
+            *   **日志文件命名约定：** `Task_[任务标识符]_Log.md`（例如，`Task_Data_Processing_Log.md`）。
+            *   **示例路径：** `Memory/Task_Data_Processing_Log.md`
+    4.  **用以下标题填充每个单独的日志文件 (`Task_..._Log.md`)：**
 
         ```markdown
-        # APM Task Log: [Full Task Title from Implementation_Plan.md]
+        # APM 任务日志：[来自 Implementation_Plan.md 的完整任务标题]
         
-        Project Goal: [Brief project goal, from Implementation Plan]
-        Phase: [Phase Name from Implementation_Plan.md, if applicable, otherwise "N/A"]
-        Task Reference in Plan: [Full Task Heading from Implementation_Plan.md, e.g., "### Task A - Agent A: User Authentication Module"]
-        Assigned Agent(s) in Plan: [Agent(s) listed for the task in Implementation_Plan.md]
-        Log File Creation Date: [YYYY-MM-DD]
+        项目目标：[来自实施计划的简要项目目标]
+        阶段：[来自 Implementation_Plan.md 的阶段名称，如果适用，否则为"N/A"]
+        计划中的任务参考：[来自 Implementation_Plan.md 的完整任务标题，例如，"### 任务 A - 代理 A：用户身份验证模块"]
+        计划中分配的代理：[在 Implementation_Plan.md 中为任务列出的代理]
+        日志文件创建日期：[YYYY-MM-DD]
         
         ---
         
-        ## Log Entries
+        ## 日志条目
         
-        *(All subsequent log entries in this file MUST follow the format defined in `prompts/02_Utility_Prompts_And_Format_Definitions/Memory_Bank_Log_Format.md`)*
+        *（此文件中的所有后续日志条目都必须遵循 `prompts/02_Utility_Prompts_And_Format_Definitions/Memory_Bank_Log_Format.md` 中定义的格式）*
         ```
-    5.  As the MA, you are responsible for creating the `Memory/` directory, its `README.md`, and the *initial set* of phase subdirectories (if any) and task log files with their headers, corresponding to the initial tasks in the `Implementation_Plan.md`.
+    5.  作为 MA，您负责创建 `Memory/` 目录、其 `README.md`，以及与 `Implementation_Plan.md` 中的初始任务相对应的初始阶段子目录（如果有）和带有其标题的任务日志文件。
 
-## 5. Proposing and Creating the Memory Bank System to the User
+## 5. 向用户提议和创建内存库系统
 
-This process aligns with the "Consolidated Proposal & Creation" step of your initiation, where you also present the `Implementation_Plan.md` summary.
+此过程与您启动的"综合提案和创建"步骤一致，在该步骤中您还介绍了 `Implementation_Plan.md` 摘要。
 
+1.  **分析：** 根据您（MA）对项目范围和 `Implementation_Plan.md` 的计划结构的理解，使用第 3 节中的标准在单文件或多文件内存库系统之间做出决定。
+2.  **制定提案：** 为用户准备一份简短的声明，其中包括：
+    *   所选的内存库系统（例如，"单个 `Memory_Bank.md` 文件"或"`Memory/` 目录中的多文件系统，每个阶段都有子目录"）。
+    *   与（即将到来的）`Implementation_Plan.md` 中反映的项目复杂性相关的简明理由（例如，"……由于项目性质直接，"或"……为了有效管理多个阶段和复杂任务的日志"）。
+3.  **与计划摘要一起交付提案：** 在您交付 `Implementation_Plan.md` 的高级摘要的*同时*向用户展示此内存库提案。
+    *   **示例用户通信（多文件）：**
+        > "根据此项目预期的分阶段结构和多个复杂任务（将在 `Implementation_Plan.md` 中详细说明），我建议采用多文件内存库系统。这将涉及一个 `Memory/` 目录，可能每个阶段都有子目录（例如，`Memory/Phase_1_Design/`），以及关键任务的单独日志文件（例如，`Task_Alpha_User_Research_Log.md`）。这将使我们的项目日志井然有序且可追溯。
+        >
+        > 我现在将继续创建初始的 `Implementation_Plan.md` 文件和此内存库结构。请在创建后审查两者。"
+    *   **示例用户通信（单文件）：**
+        > "鉴于项目的重点范围（将在 `Implementation_Plan.md` 中详细说明），单个 `Memory_Bank.md` 文件应该足以满足我们的日志记录需求。这将为所有任务更新提供一个集中的位置。
+        >
+        > 我现在将继续创建初始的 `Implementation_Plan.md` 文件和此 `Memory_Bank.md` 文件。请在创建后审查两者。"
+4.  **创建文件：** 提交后，并假设用户对高级计划摘要和内存库概念没有立即提出异议，则继续创建：
+    *   完整的 `Implementation_Plan.md`（根据 `01_Implementation_Plan_Guide.md`）。
+    *   所选的内存库文件/目录结构，带有正确的标题，如*本*指南第 4 节所述。
+5.  **邀请审查：** 创建后，明确邀请用户审查新创建的 `Implementation_Plan.md` 的*内容*以及 `Memory_Bank.md` 文件或 `Memory/` 目录及其初始文件的结构/标题。
+
+## 6. 持续日志记录
+
+*   本指南涵盖内存库系统的*设置*。
+*   实施代理（在用户确认后）在这些文件中进行的所有*实际日志条目***必须**严格遵守 `prompts/02_Utility_Prompts_And_Format_Definitions/Memory_Bank_Log_Format.md` 中定义的格式化规则。
+*   随着在不断演变的 `Implementation_Plan.md` 中定义新任务或启动新阶段，您（MA）可能需要指导在已建立的多文件系统中创建新的日志文件，并保持相同的命名约定和标题格式。
+
+通过遵循本指南，您将建立一个组织良好、可扩展且能有效支持 APM 工作流程的内存库系统。
+
+## 严格遵守实施计划
+
+内存库的完整性取决于其忠实地反映 `Implementation_Plan.md` 中定义的项目计划结构和进度。
+
+*   **权威来源：** 所有内存库目录和文件名都必须精确地反映*当前、权威的* `Implementation_Plan.md` 中的阶段和任务标识符及描述。
+*   **验证义务：** 在创建任何目录或文件之前，负责的代理（无论是经理代理还是专业代理）都必须根据 `Implementation_Plan.md` 验证提议的名称和位置。
+*   **阶段目录命名：** 阶段目录名称必须遵循确切的命名约定：`Memory/Phase_X_Title_From_Plan/`。
+    *   `X` 是阶段编号（例如，1、2、3）。
+    *   `Title_From_Plan` 是 `Implementation_Plan.md` 中用于该阶段的确切标题字符串。计划中阶段标题中的空格应在目录名称中替换为下划线。
 1.  **Analyze:** Based on your (MA's) understanding of the project's scope and the planned structure of `Implementation_Plan.md`, decide between the Single-File or Multi-File Memory Bank system using the criteria in Section 3.
 2.  **Formulate Proposal:** Prepare a brief statement for the User that includes:
     *   The chosen Memory Bank system (e.g., "a single `Memory_Bank.md` file" or "a multi-file system within a `Memory/` directory, with subdirectories per phase").

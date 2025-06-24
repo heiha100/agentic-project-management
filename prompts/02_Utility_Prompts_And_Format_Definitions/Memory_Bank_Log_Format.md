@@ -1,84 +1,84 @@
-# APM Memory Bank Log Format & Logging Instructions
+# APM 内存库日志格式和日志记录说明
 
-## Purpose and Guiding Principles
+## 目的和指导原则
 
-Log entries are crucial for project tracking, context preservation, and effective handover between agents or project phases. They must be **concise yet informative**. The goal is to provide a clear summary of actions undertaken, key decisions made, critical outputs generated, and any significant issues encountered along with their resolutions. Logs are not intended to be an exhaustive transcript of all activities or a verbatim copy of all generated code or data.
+日志条目对于项目跟踪、上下文保留以及代理或项目阶段之间的有效交接至关重要。它们必须**简洁而信息丰富**。目标是提供对所采取行动、做出的关键决策、生成的关键输出以及遇到的任何重大问题及其解决方案的清晰摘要。日志并非旨在成为所有活动的详尽记录，也不是所有生成的代码或数据的逐字副本。
 
-## 1. Purpose
+## 1. 目的
 
-This document defines the standard format for all entries made to the project's `Memory_Bank.md` file(s) within the Agentic Project Management (APM) framework. It also provides direct instructions for any agent tasked with logging their work.
+本文档定义了在代理项目管理 (APM) 框架内对项目 `Memory_Bank.md` 文件进行的所有条目的标准格式。它还为任何负责记录其工作的代理提供直接指示。
 
-**Adherence to this format is mandatory** to ensure consistency, facilitate review by the Manager Agent and User, enable effective context handovers, maintain a clear project history, and provide traceability between tasks and outcomes.
+**必须遵守此格式**，以确保一致性，方便经理代理和用户审查，实现有效的上下文交接，保持清晰的项目历史记录，并提供任务和结果之间的可追溯性。
 
-## 2. Instructions for Logging Agents (Implementation, Specialized, etc.)
+## 2. 记录代理（实施、专业等）的说明
 
-*   **When to Log:** You MUST add an entry to the designated `Memory_Bank.md` file IMMEDIATELY upon completing any assigned task or sub-task, reaching a significant milestone (e.g., completing a major function, finishing a complex module setup), encountering a blocker, or generating a notable result/output pertinent to your task. **Crucially, you will need to inform the User about the state of your task and he shall decide whether to log and report back to the Manager or not.**
-*   **Consult Your Prompt:** Your task assignment prompt, provided by the Manager Agent via the User, should explicitly instruct you to log your work according to this guide upon completion. Refer back to it if unsure about task scope.
-*   **Locate the Memory Bank:** The Manager Agent or User will specify the path to the correct `Memory_Bank.md` file (there might be multiple for large projects). If unsure, ask for clarification. Log entries should typically be appended to the end of the file.
-*   **Use the Defined Format:** Structure your log entry precisely according to the Markdown format outlined in Section 3 below. Pay close attention to required fields and formatting.
-*   **Be Clear and Concise:** Provide enough detail for the Manager Agent to understand *what* you did, *why* (linking to task requirements), *what* the outcome was, and any issues encountered. Avoid excessive verbosity but ensure all critical information is present.
-*   **Use Exact Task Reference:** Copy the *exact* Task Identifier (e.g., `Phase 1 / Task A / Item 2`) from the `Implementation_Plan.md` or your assignment prompt into the `Task Reference` field.
-*   **Code Changes:** When logging code modifications, use standard code blocks (` ` and ``` ```). Clearly indicate the file modified. Providing the changed snippets is often more useful than the entire file. Use diff-like syntax (`+` for additions, `-` for deletions) within the code block *if it adds clarity*, but do not use the specific `diff` language specifier in the code block fence (```diff).
-*   **Errors and Blockers:** If the log is about an error or a blockage then clearly state any errors encountered or reasons why a task could not be completed. Provide relevant error messages or stack traces within the `Output/Result` or `Issues/Blockers` section. If blocked, explain the blocker clearly so the Manager Agent can understand the impediment.
+*   **何时记录：** 在完成任何分配的任务或子任务、达到重要里程碑（例如，完成一个主要功能、完成一个复杂模块的设置）、遇到障碍或生成与您的任务相关的显著结果/输出时，您必须立即在指定的 `Memory_Bank.md` 文件中添加一个条目。**至关重要的是，您需要将任务的状态告知用户，他将决定是否记录并向经理报告。**
+*   **查阅您的提示：** 您的任务分配提示由经理代理通过用户提供，应明确指示您在完成后根据本指南记录您的工作。如果不确定任务范围，请回头查阅。
+*   **找到内存库：** 经理代理或用户将指定正确 `Memory_Bank.md` 文件的路径（对于大型项目，可能有多个）。如果不确定，请请求澄清。日志条目通常应附加到文件末尾。
+*   **使用定义的格式：** 根据下面第 3 节中概述的 Markdown 格式精确地构建您的日志条目。密切注意必填字段和格式。
+*   **清晰简洁：** 提供足够的细节，以便经理代理了解您*做了什么*、*为什么*（链接到任务要求）、*结果是什么*以及遇到的任何问题。避免过多的冗长，但要确保所有关键信息都存在。
+*   **使用确切的任务参考：** 将 `Implementation_Plan.md` 或您的分配提示中的*确切*任务标识符（例如，`阶段 1 / 任务 A / 项目 2`）复制到 `任务参考` 字段中。
+*   **代码更改：** 在记录代码修改时，使用标准代码块（`` ` `` 和 ``` ```）。清楚地指出修改的文件。提供更改的片段通常比整个文件更有用。在代码块内使用类似 diff 的语法（`+` 表示添加，`-` 表示删除）*如果能增加清晰度*，但不要在代码块围栏中使用特定的 `diff` 语言说明符 (```diff)。
+*   **错误和障碍：** 如果日志是关于错误或阻塞的，则清楚地说明遇到的任何错误或无法完成任务的原因。在 `输出/结果` 或 `问题/障碍` 部分提供相关的错误消息或堆栈跟踪。如果被阻止，请清楚地解释障碍，以便经理代理可以理解障碍。
 
-## 3. Memory Bank Entry Format (Markdown)
+## 3. 内存库条目格式 (Markdown)
 
-Each log entry must be clearly separated from the previous one using a Markdown horizontal rule (`---`) and must follow this structure:
+每个日志条目必须使用 Markdown 水平规则 (`---`) 与前一个条目明确分开，并且必须遵循以下结构：
 
 ```markdown
 ---
-**Agent:** [Your Assigned Agent ID, e.g., Agent B, Debugger 1 - Use the identifier assigned by the Manager Agent]
-**Task Reference:** [Exact reference from Implementation_Plan.md, e.g., Task B, Sub-task 2 OR Phase 1 / Task C / Item 3]
+**代理：** [您分配的代理 ID，例如，代理 B，调试器 1 - 使用经理代理分配的标识符]
+**任务参考：** [来自 Implementation_Plan.md 的确切参考，例如，任务 B，子任务 2 或阶段 1 / 任务 C / 项目 3]
 
-**Summary:**
-[A brief (1-2 sentence) high-level summary of the action taken or the result logged. What was the main point?]
+**摘要：**
+[对所采取的行动或记录的结果的简短（1-2 句）高级摘要。要点是什么？]
 
-**Details:**
-[More detailed explanation of the work performed. Include:
-    - Steps taken in logical order.
-    - Rationale for significant decisions made during the task (especially if deviating or making choices).
-    - Link actions back to specific requirements mentioned in the task description if applicable.
-    - Observations or key findings.]
+**详细信息：**
+[对所执行工作的更详细解释。包括：
+    - 按逻辑顺序采取的步骤。
+    - 在任务期间做出的重要决策的基本原理（特别是如果偏离或做出选择）。
+    - 如果适用，将行动链接回任务描述中提到的特定要求。
+    - 观察或主要发现。]
 
-**Output/Result:**
-[Include relevant outputs here. Use Markdown code blocks (```) for code snippets, terminal logs, or command outputs. Indicate file paths for created/modified files. For code changes, show the relevant snippet. Textual results or summaries can be placed directly. If output is large, consider saving to a separate file and referencing the path here.]
-```[code snippet, command output, file path reference, or textual result]```
+**输出/结果：**
+[在此处包含相关输出。对代码片段、终端日志或命令输出使用 Markdown 代码块 (```)。指明创建/修改文件的文件路径。对于代码更改，显示相关片段。文本结果或摘要可以直接放置。如果输出很大，请考虑保存到单独的文件并在此处引用路径。]
+```[代码片段、命令输出、文件路径参考或文本结果]```
 
-**Status:** [Choose ONE:
-    - **Completed:** The assigned task/sub-task was finished successfully according to requirements.
-    - **Partially Completed:** Significant progress made, but the task is not fully finished. Explain what remains in Details or Next Steps.
-    - **Blocked:** Unable to proceed due to an external factor or prerequisite not being met. Explain in Issues/Blockers.
-    - **Error:** An error occurred that prevented successful completion. Explain in Issues/Blockers and provide error details in Output/Result.
-    - **Information Only:** Logging a finding, decision, or observation not tied to direct task completion.]
+**状态：** [选择一个：
+    - **已完成：** 分配的任务/子任务已根据要求成功完成。
+    - **部分完成：** 取得了重大进展，但任务尚未完全完成。在"详细信息"或"后续步骤"中解释剩余部分。
+    - **已阻止：** 由于外部因素或未满足先决条件而无法继续。在"问题/障碍"中解释。
+    - **错误：** 发生错误，导致无法成功完成。在"问题/障碍"中解释，并在"输出/结果"中提供错误详细信息。
+    - **仅供参考：** 记录与直接任务完成无关的发现、决策或观察。]
 
-**Issues/Blockers:**
-[Describe any issues encountered, errors that occurred (if not fully detailed in Output), or reasons for being blocked. Be specific and provide actionable information if possible. State "None" if no issues.]
+**问题/障碍：**
+[描述遇到的任何问题、发生的错误（如果未在"输出"中详细说明）或被阻止的原因。请具体说明，并尽可能提供可操作的信息。如果没有问题，请注明"无"。]
 
-**Next Steps (Optional):**
-[Note any immediate follow-up actions required from you or expected from others, or the next logical task if partially completed. Useful for guiding the Manager Agent. Otherwise, state "None" or omit.]
+**后续步骤（可选）：**
+[注意您或他人需要立即采取的任何后续行动，或者如果部分完成，则为下一个逻辑任务。用于指导经理代理。否则，请注明"无"或省略。]
 
 ```
 
-## 4. Example Entry
+## 4. 示例条目
 
 ```markdown
 ---
-**Agent:** Agent A
-**Task Reference:** Phase 1 / Task A / Item 2 (Implement Registration Endpoint)
+**代理：** 代理 A
+**任务参考：** 阶段 1 / 任务 A / 项目 2 (实施注册端点)
 
-**Summary:**
-Implemented the backend API endpoint for user registration (`POST /api/users/register`), including input validation and password hashing.
+**摘要：**
+实施了用户注册的后端 API 端点 (`POST /api/users/register`)，包括输入验证和密码哈希。
 
-**Details:**
-- Created the API route `POST /api/users/register` in `routes/user.js` as specified.
-- Added input validation using `express-validator` library to check for valid email format and minimum password length (8 characters), matching requirements.
-- Integrated `bcrypt` library (cost factor 12) for secure password hashing before storage, as per security best practices.
-- Wrote logic to store the new user record in the PostgreSQL database using the configured ORM (`User` model).
-- Ensured only non-sensitive user data (ID, email, name) is returned upon successful registration to prevent data leakage. Tested endpoint locally with sample valid and invalid data.
+**详细信息：**
+- 按照指定在 `routes/user.js` 中创建了 API 路由 `POST /api/users/register`。
+- 使用 `express-validator` 库添加了输入验证，以检查有效的电子邮件格式和最小密码长度（8 个字符），以符合要求。
+- 根据安全最佳实践，集成了 `bcrypt` 库（成本因子 12）用于在存储前进行安全的密码哈希。
+- 使用配置的 ORM (`User` 模型) 编写了将新用户记录存储在 PostgreSQL 数据库中的逻辑。
+- 确保成功注册后仅返回非敏感用户数据（ID、电子邮件、姓名）以防止数据泄露。使用有效的和无效的示例数据在本地测试了端点。
 
-**Output/Result:**
-```start of cell
-// Snippet from routes/user.js showing validation and hashing logic
+**输出/结果：**
+```
+// routes/user.js 中显示验证和哈希逻辑的片段
 router.post(
   '/register',
   [
@@ -86,7 +86,7 @@ router.post(
     check('password','Please enter a password with 8 or more characters').isLength({ min: 8 })
   ],
   async (req, res) => {
-    // ... validation error handling ...
+    // ... 验证错误处理 ...
     const { name, email, password } = req.body;
     try {
       let user = await User.findOne({ email });
@@ -97,75 +97,75 @@ router.post(
       const salt = await bcrypt.genSalt(12);
       user.password = await bcrypt.hash(password, salt);
       await user.save();
-      // Return JWT or user object (omitting password)
-      // ... token generation logic ...
-      res.json({ token }); // Example response
+      // 返回 JWT 或用户对象（省略密码）
+      // ... 令牌生成逻辑 ...
+      res.json({ token }); // 示例响应
     } catch (err) {
       console.error(err.message);
       res.status(500).send('Server error');
     }
   }
 );
-```end of cell
+```
 
-**Status:** Completed
+**状态：** 已完成
 
-**Issues/Blockers:**
-None
+**问题/障碍：**
+无
 
-**Next Steps (Optional):**
-Ready to proceed with Task A / Item 3 (Implement Login Endpoint).
+**后续步骤（可选）：**
+准备继续执行任务 A / 项目 3 (实施登录端点)。
 ```
 
 ---
 
-## Achieving Conciseness and Informativeness
+## 实现简洁和信息丰富
 
-To ensure logs are valuable without being overwhelming, adhere to the following principles:
+为确保日志有价值而又不会让人不知所措，请遵守以下原则：
 
-*   **Summarize, Don't Transcribe:** Instead of detailing every minor step or internal thought process, summarize the overall action and its outcome. 
-    *   *Less Effective:* "I decided to look at the data file. I opened the `train.csv` file. I then ran the `.head()` command to see the first few rows. Then I ran `.info()` to see the data types. Then I ran `.describe()`."
-    *   *More Effective:* "Loaded `train.csv`. Initial inspection using `.head()`, `.info()`, and `.describe()` revealed [key observation, e.g., data types, presence of nulls, basic stats distribution]."
+*   **总结，不要转录：** 与其详细说明每个微小的步骤或内部思维过程，不如总结整个行动及其结果。
+    *   *效果较差：* "我决定查看数据文件。我打开了 `train.csv` 文件。然后我运行了 `.head()` 命令来查看前几行。然后我运行了 `.info()` 来查看数据类型。然后我运行了 `.describe()`。"
+    *   *效果更好：* "加载了 `train.csv`。使用 `.head()`、`.info()` 和 `.describe()` 进行初步检查，发现 [关键观察，例如，数据类型、是否存在空值、基本统计分布]。"
 
-*   **Focus on Key Information:** Prioritize information that is critical for another agent or a human reviewer to understand:
-    *   What was the objective of this task segment?
-    *   What were the key actions taken to achieve it?
-    *   What were the significant findings or outputs?
-    *   What decisions were made, and what was the brief rationale?
-    *   Were there any unexpected issues, and how were they addressed?
+*   **关注关键信息：** 优先考虑对另一个代理或人类审查员理解至关重要的信息：
+    *   此任务段的目标是什么？
+    *   为实现它采取了哪些关键行动？
+    *   重要的发现或输出是什么？
+    *   做出了哪些决定，简要的理由是什么？
+    *   是否有任何意外问题，以及如何解决？
 
-*   **Code Snippets - Use Sparingly:**
-    *   Include code snippets *only if* they are short, essential for understanding a specific, novel, or complex solution, or represent a critical configuration. 
-    *   Do NOT include lengthy blocks of boilerplate code, common library calls that can be easily inferred, or extensive script outputs.
-    *   If extensive code needs to be referenced (e.g., a utility function written), state that it was created/modified and committed to the relevant script file, then reference that file.
+*   **代码片段 - 谨慎使用：**
+    *   *仅当*代码片段简短、对于理解特定、新颖或复杂的解决方案至关重要，或代表关键配置时，才包括代码片段。
+    *   不要包括冗长的样板代码、可以轻松推断的常见库调用或大量的脚本输出。
+    *   如果需要引用大量代码（例如，编写的实用程序函数），请说明已创建/修改并提交到相关脚本文件，然后引用该文件。
 
-*   **Avoid Redundancy:** If information is clearly documented and accessible in another primary project artifact (e.g., the `Implementation_Plan.md` outlines the task goal, a committed script contains the full code), briefly reference that artifact instead of repeating its content extensively in the log.
-    *   *Example:* "Implemented the preprocessing steps as defined in Task 2.3 of `Implementation_Plan.md`. The core function `preprocess_text()` was added to `scripts/preprocessing_utils.py`."
+*   **避免冗余：** 如果信息已在另一个主要项目产物中清晰记录并可访问（例如，`Implementation_Plan.md` 概述了任务目标，提交的脚本包含完整代码），请简要引用该产物，而不是在日志中大量重复其内容。
+    *   *示例：* "按照 `Implementation_Plan.md` 中任务 2.3 的定义实施了预处理步骤。核心函数 `preprocess_text()` 已添加到 `scripts/preprocessing_utils.py`。"
 
-## Examples of Log Entry Detail
+## 日志条目详细程度示例
 
-Consider the task: "Load and inspect training and validation datasets."
+考虑任务："加载并检查训练和验证数据集。"
 
-**1. Good Concise Log Entry:**
-
-```
-### Log Entry
-
-*   **Status:** Completed
-*   **Summary:** Loaded `train_dataset.csv` (10000x3) and `val_dataset.csv` (2000x3). Initial inspection shows 'text' and 'sentiment' columns. No missing values in 'sentiment'. 'text' column has a few nulls in train (5) and val (2) that will need handling. Sentiment distribution appears balanced in train, slightly skewed towards positive in val. Average text length is X characters.
-*   **Outputs:** train_df, val_df shapes logged. Null value counts recorded.
-*   **Decisions:** Confirmed data loading successful. Noted nulls for next preprocessing step.
-*   **Issues:** None.
-```
-
-**2. Overly Verbose Log Entry (To Avoid):**
+**1. 好的简洁日志条目：**
 
 ```
-### Log Entry
+### 日志条目
 
-*   **Status:** Completed
-*   **Summary:** I started by thinking about loading the data. The plan said to load `train_dataset.csv`. So I wrote `train_df = pd.read_csv('data/train_dataset.csv')`. This command ran successfully. Then I wanted to see the data, so I did `print(train_df.head())`. The output was [outputs head]. Then I ran `print(train_df.info())` which showed [outputs info]. I also checked for nulls with `train_df.isnull().sum()` which showed [outputs nulls]. I did the same for `val_dataset.csv`. I wrote `val_df = pd.read_csv('data/val_dataset.csv')`. This also worked. I printed its head and info too. It seems the data is okay. The shapes are (10000,3) and (2000,3). 
-*   **Outputs:** Printed head of train_df, info of train_df, nulls of train_df. Printed head of val_df, info of val_df, nulls of val_df.
-*   **Decisions:** Decided the files loaded correctly.
-*   **Issues:** Took a while to type all the print statements.
+*   **状态：** 已完成
+*   **摘要：** 加载了 `train_dataset.csv` (10000x3) 和 `val_dataset.csv` (2000x3)。初步检查显示"文本"和"情感"列。"情感"中没有缺失值。"文本"列在训练集（5）和验证集（2）中有一些空值，需要处理。情感分布在训练集中似乎是平衡的，在验证集中略微偏向积极。平均文本长度为 X 个字符。
+*   **输出：** 记录了 train_df、val_df 的形状。记录了空值计数。
+*   **决策：** 确认数据加载成功。为下一个预处理步骤记录了空值。
+*   **问题：** 无。
+```
+
+**2. 过于冗长的日志条目（应避免）：**
+
+```
+### 日志条目
+
+*   **状态：** 已完成
+*   **摘要：** 我开始考虑加载数据。计划说要加载 `train_dataset.csv`。所以我写了 `train_df = pd.read_csv('data/train_dataset.csv')`。这个命令成功运行了。然后我想看看数据，所以我做了 `print(train_df.head())`。输出是 [输出头部]。然后我运行了 `print(train_df.info())`，它显示了 [输出信息]。我还用 `train_df.isnull().sum()` 检查了空值，它显示了 [输出空值]。我对 `val_dataset.csv` 也做了同样的操作。我写了 `val_df = pd.read_csv('data/val_dataset.csv')`。这也成功了。我也打印了它的头部和信息。看起来数据没问题。形状是 (10000,3) 和 (2000,3)。
+*   **输出：** 打印了 train_df 的头部，train_df 的信息，train_df 的空值。打印了 val_df 的头部，val_df 的信息，val_df 的空值。
+*   **决策：** 决定文件加载正确。
+*   **问题：** 输入所有打印语句花了一段时间。
 ```
